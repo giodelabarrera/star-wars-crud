@@ -9,9 +9,7 @@ test('should create a character', () => {
     skinColor: 'fair',
     eyeColor: 'blue',
     birthYear: '19BBY',
-    gender: 'male',
-    created: '2014-12-09T13:50:51.644000Z',
-    edited: '2014-12-20T21:17:56.891000Z'
+    gender: 'male'
   }
   const character = createCharacter(characterRaw)
   expect(character).toHaveProperty('name', characterRaw.name)
@@ -21,8 +19,6 @@ test('should create a character', () => {
   expect(character).toHaveProperty('skinColor', characterRaw.skinColor)
   expect(character).toHaveProperty('eyeColor', characterRaw.eyeColor)
   expect(character).toHaveProperty('birthYear', characterRaw.birthYear)
-  expect(character).toHaveProperty('gender.toJson')
-  expect(character.gender.toJson().value).toBe(characterRaw.gender)
-  expect(character).toHaveProperty('created', characterRaw.created)
-  expect(character).toHaveProperty('edited', characterRaw.edited)
+  expect(character).toHaveProperty('gender.value')
+  expect(character.gender.value).toBe(characterRaw.gender)
 })

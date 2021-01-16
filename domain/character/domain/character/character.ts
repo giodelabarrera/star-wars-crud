@@ -10,8 +10,6 @@ type CharacterProps = {
   eyeColor: string
   birthYear: string
   gender: CharacterGender
-  created?: string
-  edited?: string
 }
 
 export default class Character {
@@ -24,8 +22,6 @@ export default class Character {
   readonly eyeColor: string
   readonly birthYear: string
   readonly gender: CharacterGender
-  readonly created: string
-  readonly edited: string
 
   constructor({
     id,
@@ -36,9 +32,7 @@ export default class Character {
     skinColor,
     eyeColor,
     birthYear,
-    gender,
-    created,
-    edited
+    gender
   }: CharacterProps) {
     this.id = id
     this.name = name
@@ -49,8 +43,6 @@ export default class Character {
     this.eyeColor = eyeColor
     this.birthYear = birthYear
     this.gender = gender
-    this.created = created
-    this.edited = edited
   }
 
   toJson() {
@@ -63,9 +55,7 @@ export default class Character {
       skinColor: this.skinColor,
       eyeColor: this.eyeColor,
       birthYear: this.birthYear,
-      gender: this.gender.toJson().value,
-      created: this.created,
-      edited: this.edited
+      gender: this.gender.toJson().value
     }
   }
 }
