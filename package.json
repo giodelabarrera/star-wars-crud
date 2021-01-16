@@ -53,5 +53,14 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run build"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|ts|tsx)": "eslint",
+    "**/*.+(js|json|ts|tsx)": "prettier --write"
   }
 }
