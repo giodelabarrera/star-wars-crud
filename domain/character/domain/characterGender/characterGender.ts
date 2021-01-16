@@ -11,20 +11,30 @@ type CharacterGenderProps = {
   value: CharacterGenderType
 }
 
-export default function CharacterGender({value}: CharacterGenderProps) {
+export type CharacterGender = {
+  value: CharacterGenderType
+  isMale: () => boolean
+  isFemale: () => boolean
+  isNotApplicable: () => boolean
+  toJson: () => Record<string, unknown>
+}
+
+export default function CharacterGender({
+  value
+}: CharacterGenderProps): CharacterGender {
   function toJson() {
     return {value}
   }
 
-  function isMale() {
+  function isMale(): boolean {
     return value === TYPES.MALE
   }
 
-  function isFemale() {
+  function isFemale(): boolean {
     return value === TYPES.FEMALE
   }
 
-  function isNotApplicable() {
+  function isNotApplicable(): boolean {
     return value === TYPES.NOT_APPLICABLE
   }
 

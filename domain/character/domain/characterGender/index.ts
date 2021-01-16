@@ -4,8 +4,8 @@ type CharacterGenderRawProps = {
   value: string
 }
 
-function createCharacterGender({value}: CharacterGenderRawProps) {
+export default function createCharacterGender({
+  value
+}: CharacterGenderRawProps) {
   return CharacterGender({value: <CharacterGenderType>value})
 }
-
-export default createCharacterGender

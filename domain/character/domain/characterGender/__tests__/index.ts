@@ -1,6 +1,6 @@
 import createCharacterGender from '..'
 
-test('should return a character gender', () => {
+test('should create a character gender', () => {
   const value = 'male'
   const characterGender = createCharacterGender({value})
   expect(characterGender).toHaveProperty('isMale')
