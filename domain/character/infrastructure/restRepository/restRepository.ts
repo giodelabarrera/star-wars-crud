@@ -1,4 +1,5 @@
 import createCharacter from '../../domain/character'
+import Character from '../../domain/character/character'
 import CharacterRepository from '../../domain/characterRepository'
 
 import {ClientMethod, ClientOptions} from './client'
@@ -10,7 +11,7 @@ class RESTRepository implements CharacterRepository {
     this.client = client
   }
 
-  async search() {
+  async search(): Promise<Character[]> {
     const options = {method: ClientMethod.GET}
     const response = await this.client('/characters', options)
     const charactersRaw = mapListResponseToCharactersRaw(response)
