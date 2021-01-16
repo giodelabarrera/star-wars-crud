@@ -1,9 +1,10 @@
-import createCharacterGender from '../index'
-import {Gender} from '../characterGender'
+import createCharacterGender from '..'
 
 test('should return a character gender', () => {
-  const characterGender = createCharacterGender({value: Gender.FEMALE})
-
-  debugger
-  expect(characterGender).toBe(4)
+  const value = 'male'
+  const characterGender = createCharacterGender({value})
+  expect(characterGender).toHaveProperty('isMale')
+  expect(characterGender).toHaveProperty('isFemale')
+  expect(characterGender).toHaveProperty('isNotApplicable')
+  expect(characterGender).toHaveProperty('value', value)
 })

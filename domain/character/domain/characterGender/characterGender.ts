@@ -1,20 +1,32 @@
-enum Gender {
-  MALE = 'male',
-  FEMALE = 'female',
-  NA = 'n/a'
-}
+const TYPES = {
+  MALE: 'male',
+  FEMALE: 'female',
+  NOT_APPLICABLE: 'n/a'
+} as const
+
+type Keys = keyof typeof TYPES
+export type CharacterGenderType = typeof TYPES[Keys]
 
 type CharacterGenderProps = {
-  value: Gender
+  value: CharacterGenderType
 }
 
-function CharacterGender({value}: CharacterGenderProps) {
+export default function CharacterGender({value}: CharacterGenderProps) {
   function toJson() {
     return {value}
   }
 
-  return {value, toJson}
-}
+  function isMale() {
+    return value === TYPES.MALE
+  }
 
-export default CharacterGender
-export {Gender}
+  function isFemale() {
+    return value === TYPES.FEMALE
+  }
+
+  function isNotApplicable() {
+    return value === TYPES.NOT_APPLICABLE
+  }
+
+  return {value, isMale, isFemale, isNotApplicable, toJson}
+}

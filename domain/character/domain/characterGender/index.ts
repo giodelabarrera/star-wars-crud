@@ -1,12 +1,11 @@
-import CharacterGender, {Gender} from './characterGender'
+import CharacterGender, {CharacterGenderType} from './characterGender'
 
 type CharacterGenderRawProps = {
-  value: Gender
+  value: string
 }
 
-export default function createCharacterGender({
-  value
-}: CharacterGenderRawProps) {
-  Object.values(Gender)
-  return CharacterGender({value})
+function createCharacterGender({value}: CharacterGenderRawProps) {
+  return CharacterGender({value: <CharacterGenderType>value})
 }
+
+export default createCharacterGender
