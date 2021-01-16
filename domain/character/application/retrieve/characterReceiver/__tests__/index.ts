@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock'
 
-import createCharacterRetriever from '..'
+import createCharacterReceiver from '..'
 
 const baseUrl = 'http://localhost:3306'
 
@@ -43,8 +43,8 @@ test('should return a character by id', async () => {
   }
   fetchMock.get(endpoint, fakeCharacter)
 
-  const characterRetriever = createCharacterRetriever()
-  const character = await characterRetriever.execute({id})
+  const characterReceiver = createCharacterReceiver()
+  const character = await characterReceiver.execute({id})
 
   expect(character).toBeDefined()
   expect(character).not.toBeNull()
@@ -56,9 +56,9 @@ test('should fail when it happens a not found error', async () => {
   const endpoint = `${baseUrl}/characters/${id}`
   fetchMock.get(endpoint, 404)
 
-  const characterRetriever = createCharacterRetriever()
+  const characterReceiver = createCharacterReceiver()
 
-  await expect(characterRetriever.execute({id})).rejects.toHaveProperty(
+  await expect(characterReceiver.execute({id})).rejects.toHaveProperty(
     'status',
     404
   )
@@ -69,9 +69,9 @@ test('should fail when it happens a server error', async () => {
   const endpoint = `${baseUrl}/characters/${id}`
   fetchMock.get(endpoint, 500)
 
-  const characterRetriever = createCharacterRetriever()
+  const characterReceiver = createCharacterReceiver()
 
-  await expect(characterRetriever.execute({id})).rejects.toHaveProperty(
+  await expect(characterReceiver.execute({id})).rejects.toHaveProperty(
     'status',
     500
   )

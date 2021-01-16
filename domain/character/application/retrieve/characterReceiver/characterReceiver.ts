@@ -1,6 +1,6 @@
 import CharacterRepository from '../../../domain/characterRepository'
 
-export default class CharacterRetriever {
+export default class CharacterReceiver {
   readonly characterRepository: CharacterRepository
 
   constructor({characterRepository}) {

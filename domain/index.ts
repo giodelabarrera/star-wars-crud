@@ -5,7 +5,7 @@ const USE_CASES = {
     ),
   character__retrieve_character_use_case: () =>
     import(
-      /* webpackChunkName: "character__retrieve_character_use_case" */ `./character/application/retrieve/characterRetriever`
+      /* webpackChunkName: "character__retrieve_character_use_case" */ `./character/application/retrieve/characterReceiver`
     )
 }
 

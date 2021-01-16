@@ -2,7 +2,10 @@ import {stringify} from 'query-string'
 
 import createCharacter from '../../domain/character'
 import Character from '../../domain/character/character'
-import CharacterRepository from '../../domain/characterRepository'
+import CharacterRepository, {
+  RetrieveProps,
+  CreateProps
+} from '../../domain/characterRepository'
 
 import {ClientMethod, ClientOptions} from './client'
 
@@ -28,7 +31,7 @@ class RESTRepository implements CharacterRepository {
     return characters
   }
 
-  async retrieve({id}: {id: number}): Promise<Character> {
+  async retrieve({id}: RetrieveProps): Promise<Character> {
     const options = {
       method: ClientMethod.GET
     }
@@ -37,6 +40,21 @@ class RESTRepository implements CharacterRepository {
     const characterRaw = mapSingleResponseToCharacterRaw(response)
     const character = createCharacter(characterRaw)
     return character
+  }
+
+  async create({character}: CreateProps): Promise<Character> {
+    const singleData: Record<string, unknown> = mapCharacterRawToSingleData(
+      character
+    )
+    const options = {
+      method: ClientMethod.POST,
+      data: singleData
+    }
+    const response = await this.client(`characters`, options)
+
+    const characterRaw = mapSingleResponseToCharacterRaw(response)
+    const createdCharacter = createCharacter(characterRaw)
+    return createdCharacter
   }
 }
 
@@ -81,6 +99,19 @@ function mapSingleResponseToCharacterRaw(response) {
 
 function mapListResponseToCharactersRaw(response) {
   return response.map(mapSingleResponseToCharacterRaw)
+}
+
+function mapCharacterRawToSingleData(character: Character) {
+  return {
+    name: character.name,
+    height: character.height,
+    mass: character.mass,
+    hair_color: character.hairColor,
+    skin_color: character.skinColor,
+    eye_color: character.eyeColor,
+    birth_year: character.birthYear,
+    gender: character.gender.value
+  }
 }
 
 export default RESTRepository

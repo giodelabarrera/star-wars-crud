@@ -1,7 +1,7 @@
 import createCharacterGender from '../characterGender'
 import Character from './character'
 
-type CharacterRawProps = {
+export type CharacterRaw = {
   id?: number
   name: string
   height: string
@@ -11,8 +11,8 @@ type CharacterRawProps = {
   eyeColor: string
   birthYear: string
   gender: string
-  created: string
-  edited: string
+  created?: string
+  edited?: string
 }
 
 export default function createCharacter({
@@ -27,7 +27,7 @@ export default function createCharacter({
   gender: genderValue,
   created,
   edited
-}: CharacterRawProps): Character {
+}: CharacterRaw): Character {
   const gender = createCharacterGender({value: genderValue})
   return new Character({
     id,
