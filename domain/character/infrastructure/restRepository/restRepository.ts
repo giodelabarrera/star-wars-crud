@@ -41,6 +41,7 @@ function mapSearchParamsToQueryString({query, fields}) {
 
 function mapSingleResponseToCharacterRaw(response) {
   const {
+    id,
     name,
     height,
     mass,
@@ -53,6 +54,7 @@ function mapSingleResponseToCharacterRaw(response) {
     edited
   } = response
   return {
+    id,
     name,
     height,
     mass,

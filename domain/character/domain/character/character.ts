@@ -1,6 +1,7 @@
 import CharacterGender from '../characterGender/characterGender'
 
 type CharacterProps = {
+  id?: number
   name: string
   height: string
   mass: string
@@ -14,6 +15,7 @@ type CharacterProps = {
 }
 
 export default class Character {
+  readonly id: number
   readonly name: string
   readonly height: string
   readonly mass: string
@@ -26,6 +28,7 @@ export default class Character {
   readonly edited: string
 
   constructor({
+    id,
     name,
     height,
     mass,
@@ -37,6 +40,7 @@ export default class Character {
     created,
     edited
   }: CharacterProps) {
+    this.id = id
     this.name = name
     this.height = height
     this.mass = mass
@@ -51,6 +55,7 @@ export default class Character {
 
   toJson() {
     return {
+      id: this.id,
       name: this.name,
       height: this.height,
       mass: this.mass,
