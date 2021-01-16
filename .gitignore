@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+
+# production
+/build
+
+# misc
+.DS_Store
+
+# debug
+npm-debug.log*
