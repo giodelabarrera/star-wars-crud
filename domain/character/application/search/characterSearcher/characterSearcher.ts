@@ -7,8 +7,8 @@ export default class CharacterSearcher {
     this.characterRepository = characterRepository
   }
 
-  async execute() {
-    const characters = await this.characterRepository.search()
+  async execute(params): Promise<Record<string, unknown>[]> {
+    const characters = await this.characterRepository.search(params)
     return characters.map(character => character.toJson())
   }
 }
