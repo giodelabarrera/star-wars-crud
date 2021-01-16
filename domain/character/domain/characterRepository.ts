@@ -1,7 +1,8 @@
 import Character from './character/character'
 
 export type SearchProps = {
-  query?: string
+  query: string
+  fields: Record<string, unknown>
 }
 
 interface CharacterRepository {

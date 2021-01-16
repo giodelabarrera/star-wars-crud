@@ -1,3 +1,5 @@
+import {stringify} from 'query-string'
+
 import createCharacter from '../../domain/character'
 import Character from '../../domain/character/character'
 import CharacterRepository from '../../domain/characterRepository'
@@ -11,13 +13,30 @@ class RESTRepository implements CharacterRepository {
     this.client = client
   }
 
-  async search(): Promise<Character[]> {
-    const options = {method: ClientMethod.GET}
-    const response = await this.client('characters', options)
+  async search({query = '', fields = null} = {}): Promise<Character[]> {
+    const params = {query, fields}
+    const queryString = mapSearchParamsToQueryString(params)
+
+    const endpoint = 'characters' + (queryString && `?${queryString}`)
+    const options = {
+      method: ClientMethod.GET
+    }
+    const response = await this.client(endpoint, options)
+
     const charactersRaw = mapListResponseToCharactersRaw(response)
     const characters = charactersRaw.map(createCharacter)
     return characters
   }
+}
+
+function mapSearchParamsToQueryString({query, fields}) {
+  const parsedParams: Record<string, unknown> = {}
+  if (query) parsedParams.q = query
+  if (fields) {
+    parsedParams._sort = Object.keys(fields).join(',')
+    parsedParams._order = Object.values(fields).join(',')
+  }
+  return stringify(parsedParams)
 }
 
 function mapSingleResponseToCharacterRaw(response) {
