@@ -27,6 +27,17 @@ class RESTRepository implements CharacterRepository {
     const characters = charactersRaw.map(createCharacter)
     return characters
   }
+
+  async retrieve({id}: {id: number}): Promise<Character> {
+    const options = {
+      method: ClientMethod.GET
+    }
+    const response = await this.client(`characters/${id}`, options)
+
+    const characterRaw = mapSingleResponseToCharacterRaw(response)
+    const character = createCharacter(characterRaw)
+    return character
+  }
 }
 
 function mapSearchParamsToQueryString({query, fields}) {
@@ -41,6 +52,7 @@ function mapSearchParamsToQueryString({query, fields}) {
 
 function mapSingleResponseToCharacterRaw(response) {
   const {
+    id,
     name,
     height,
     mass,
@@ -53,6 +65,7 @@ function mapSingleResponseToCharacterRaw(response) {
     edited
   } = response
   return {
+    id,
     name,
     height,
     mass,
