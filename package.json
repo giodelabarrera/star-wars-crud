@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
-    "server-start": "json-server --watch db.json",
+    "api-start": "json-server --watch db.json --port 3306",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
     "prettier": "prettier \"**/*.+(js|json|ts|tsx|scss|html)\"",
     "format": "npm run prettier -- --write",
