@@ -14,6 +14,11 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "domain/character/application/search/characterSearcher/__tests__/fakeCharacters.ts"
+  ],
   "exclude": ["node_modules", ".next", "out"]
 }

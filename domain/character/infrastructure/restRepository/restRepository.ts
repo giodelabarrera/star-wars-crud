@@ -13,7 +13,7 @@ class RESTRepository implements CharacterRepository {
 
   async search(): Promise<Character[]> {
     const options = {method: ClientMethod.GET}
-    const response = await this.client('/characters', options)
+    const response = await this.client('characters', options)
     const charactersRaw = mapListResponseToCharactersRaw(response)
     const characters = charactersRaw.map(createCharacter)
     return characters

@@ -5,7 +5,7 @@ export type SearchProps = {
 }
 
 interface CharacterRepository {
-  search({query}: SearchProps): Promise<Character[]>
+  search(params?: SearchProps): Promise<Character[]>
 }
 
 export default CharacterRepository

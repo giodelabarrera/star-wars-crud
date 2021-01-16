@@ -1,7 +1,8 @@
+import client from './client'
 import RESTRepository from './restRepository'
 
-import client from './client'
+import CharacterRepository from '../../domain/characterRepository'
 
-export default function createRESTRepository(): RESTRepository {
+export default function createRESTRepository(): CharacterRepository {
   return new RESTRepository({client})
 }
