@@ -1,7 +1,11 @@
 const USE_CASES = {
-  character__search_characters: () =>
+  character__search_characters_use_case: () =>
     import(
-      /* webpackChunkName: "character__search_characters" */ `./character/application/search/characterSearcher`
+      /* webpackChunkName: "character__search_characters_use_case" */ `./character/application/search/characterSearcher`
+    ),
+  character__retrieve_character_use_case: () =>
+    import(
+      /* webpackChunkName: "character__retrieve_character_use_case" */ `./character/application/retrieve/characterRetriever`
     )
 }
 
