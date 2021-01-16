@@ -259,7 +259,7 @@ test('should list all characters', async () => {
   fetchMock.get(endpoint, fakeCharacters)
 
   const characterSearcher = createCharacterSearcher()
-  const characters = await characterSearcher.search()
+  const characters = await characterSearcher.execute()
 
   expect(characters).toBeInstanceOf(Array)
   expect(characters).toHaveLength(10)
