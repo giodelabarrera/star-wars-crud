@@ -10,8 +10,8 @@ type CharacterProps = {
   eyeColor: string
   birthYear: string
   gender: CharacterGender
-  created: string
-  edited: string
+  created?: string
+  edited?: string
 }
 
 export default class Character {
