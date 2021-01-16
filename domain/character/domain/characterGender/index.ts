@@ -1,7 +1,4 @@
-import characterGender, {
-  CharacterGenderType,
-  CharacterGender
-} from './characterGender'
+import CharacterGender, {CharacterGenderType} from './characterGender'
 
 type CharacterGenderRaw = {
   value: string
@@ -10,5 +7,5 @@ type CharacterGenderRaw = {
 export default function createCharacterGender({
   value
 }: CharacterGenderRaw): CharacterGender {
-  return characterGender({value: <CharacterGenderType>value})
+  return new CharacterGender({value: <CharacterGenderType>value})
 }

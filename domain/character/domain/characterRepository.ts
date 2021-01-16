@@ -1,4 +1,4 @@
-import {Character} from './character/character'
+import Character from './character/character'
 
 export type SearchProps = {
   query?: string

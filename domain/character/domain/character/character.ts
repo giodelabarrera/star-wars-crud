@@ -1,4 +1,4 @@
-import {CharacterGender} from '../characterGender/characterGender'
+import CharacterGender from '../characterGender/characterGender'
 
 type CharacterProps = {
   name: string
@@ -13,48 +13,19 @@ type CharacterProps = {
   edited: string
 }
 
-export type Character = {
-  name: string
-  height: string
-  mass: string
-  hairColor: string
-  skinColor: string
-  eyeColor: string
-  birthYear: string
-  gender: CharacterGender
-  created: string
-  edited: string
-  toJson: () => Record<string, unknown>
-}
+export default class Character {
+  readonly name: string
+  readonly height: string
+  readonly mass: string
+  readonly hairColor: string
+  readonly skinColor: string
+  readonly eyeColor: string
+  readonly birthYear: string
+  readonly gender: CharacterGender
+  readonly created: string
+  readonly edited: string
 
-function character({
-  name,
-  height,
-  mass,
-  hairColor,
-  skinColor,
-  eyeColor,
-  birthYear,
-  gender,
-  created,
-  edited
-}: CharacterProps): Character {
-  function toJson() {
-    return {
-      name,
-      height,
-      mass,
-      hairColor,
-      skinColor,
-      eyeColor,
-      birthYear,
-      gender: gender.toJson().value,
-      created,
-      edited
-    }
-  }
-
-  return {
+  constructor({
     name,
     height,
     mass,
@@ -64,9 +35,32 @@ function character({
     birthYear,
     gender,
     created,
-    edited,
-    toJson
+    edited
+  }: CharacterProps) {
+    this.name = name
+    this.height = height
+    this.mass = mass
+    this.hairColor = hairColor
+    this.skinColor = skinColor
+    this.eyeColor = eyeColor
+    this.birthYear = birthYear
+    this.gender = gender
+    this.created = created
+    this.edited = edited
+  }
+
+  toJson() {
+    return {
+      name: this.name,
+      height: this.height,
+      mass: this.mass,
+      hairColor: this.hairColor,
+      skinColor: this.skinColor,
+      eyeColor: this.eyeColor,
+      birthYear: this.birthYear,
+      gender: this.gender.toJson().value,
+      created: this.created,
+      edited: this.edited
+    }
   }
 }
-
-export default character
