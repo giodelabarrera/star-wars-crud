@@ -4,7 +4,8 @@ import createCharacter from '../../domain/character'
 import Character from '../../domain/character/character'
 import CharacterRepository, {
   RetrieveProps,
-  CreateProps
+  CreateProps,
+  UpdateProps
 } from '../../domain/characterRepository'
 
 import {ClientMethod, ClientOptions} from './client'
@@ -57,7 +58,7 @@ class RESTRepository implements CharacterRepository {
     return createdCharacter
   }
 
-  async update({character}: CreateProps): Promise<Character> {
+  async update({character}: UpdateProps): Promise<Character> {
     const {id} = character
     const singleData: Record<string, unknown> = mapCharacterRawToSingleData(
       character
