@@ -19,7 +19,7 @@ export type CharacterGender = {
   toJson: () => Record<string, unknown>
 }
 
-export default function CharacterGender({
+export default function characterGender({
   value
 }: CharacterGenderProps): CharacterGender {
   function toJson() {

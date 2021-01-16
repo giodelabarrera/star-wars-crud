@@ -27,7 +27,7 @@ export type Character = {
   toJson: () => Record<string, unknown>
 }
 
-export default function Character({
+function character({
   name,
   height,
   mass,
@@ -38,7 +38,7 @@ export default function Character({
   gender,
   created,
   edited
-}: CharacterProps) {
+}: CharacterProps): Character {
   function toJson() {
     return {
       name,
@@ -68,3 +68,5 @@ export default function Character({
     toJson
   }
 }
+
+export default character

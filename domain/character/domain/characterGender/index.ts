@@ -1,11 +1,14 @@
-import CharacterGender, {CharacterGenderType} from './characterGender'
+import characterGender, {
+  CharacterGenderType,
+  CharacterGender
+} from './characterGender'
 
-type CharacterGenderRawProps = {
+type CharacterGenderRaw = {
   value: string
 }
 
 export default function createCharacterGender({
   value
-}: CharacterGenderRawProps) {
-  return CharacterGender({value: <CharacterGenderType>value})
+}: CharacterGenderRaw): CharacterGender {
+  return characterGender({value: <CharacterGenderType>value})
 }
