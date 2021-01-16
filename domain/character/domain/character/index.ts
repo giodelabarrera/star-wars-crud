@@ -11,8 +11,6 @@ export type CharacterRaw = {
   eyeColor: string
   birthYear: string
   gender: string
-  created?: string
-  edited?: string
 }
 
 export default function createCharacter({
@@ -24,9 +22,7 @@ export default function createCharacter({
   skinColor,
   eyeColor,
   birthYear,
-  gender: genderValue,
-  created,
-  edited
+  gender: genderValue
 }: CharacterRaw): Character {
   const gender = createCharacterGender({value: genderValue})
   return new Character({
@@ -38,8 +34,6 @@ export default function createCharacter({
     skinColor,
     eyeColor,
     birthYear,
-    gender,
-    created,
-    edited
+    gender
   })
 }

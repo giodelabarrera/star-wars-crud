@@ -4,7 +4,8 @@ import createCharacter from '../../domain/character'
 import Character from '../../domain/character/character'
 import CharacterRepository, {
   RetrieveProps,
-  CreateProps
+  CreateProps,
+  UpdateProps
 } from '../../domain/characterRepository'
 
 import {ClientMethod, ClientOptions} from './client'
@@ -56,6 +57,22 @@ class RESTRepository implements CharacterRepository {
     const createdCharacter = createCharacter(characterRaw)
     return createdCharacter
   }
+
+  async update({character}: UpdateProps): Promise<Character> {
+    const {id} = character
+    const singleData: Record<string, unknown> = mapCharacterRawToSingleData(
+      character
+    )
+    const options = {
+      method: ClientMethod.PUT,
+      data: singleData
+    }
+    const response = await this.client(`characters/${id}`, options)
+
+    const characterRaw = mapSingleResponseToCharacterRaw(response)
+    const updatedCharacter = createCharacter(characterRaw)
+    return updatedCharacter
+  }
 }
 
 function mapSearchParamsToQueryString({query, fields}) {
@@ -78,9 +95,7 @@ function mapSingleResponseToCharacterRaw(response) {
     skin_color: skinColor,
     eye_color: eyeColor,
     birth_year: birthYear,
-    gender,
-    created,
-    edited
+    gender
   } = response
   return {
     id,
@@ -91,9 +106,7 @@ function mapSingleResponseToCharacterRaw(response) {
     skinColor,
     eyeColor,
     birthYear,
-    gender,
-    created,
-    edited
+    gender
   }
 }
 

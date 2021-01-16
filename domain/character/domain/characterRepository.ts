@@ -13,12 +13,18 @@ export type CreateProps = {
   character: Character
 }
 
+export type UpdateProps = {
+  character: Character
+}
+
 interface CharacterRepository {
   search(params?: SearchProps): Promise<Character[]>
 
-  retrieve(params?: RetrieveProps): Promise<Character>
+  retrieve(params: RetrieveProps): Promise<Character>
 
-  create(params?: CreateProps): Promise<Character>
+  create(params: CreateProps): Promise<Character>
+
+  update(params: UpdateProps): Promise<Character>
 }
 
 export default CharacterRepository

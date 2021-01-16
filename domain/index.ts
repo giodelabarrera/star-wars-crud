@@ -6,6 +6,14 @@ const USE_CASES = {
   character__retrieve_character_use_case: () =>
     import(
       /* webpackChunkName: "character__retrieve_character_use_case" */ `./character/application/retrieve/characterReceiver`
+    ),
+  character__create_character_use_case: () =>
+    import(
+      /* webpackChunkName: "character__create_character_use_case" */ `./character/application/create/characterCreator`
+    ),
+  character__update_character_use_case: () =>
+    import(
+      /* webpackChunkName: "character__update_character_use_case" */ `./character/application/update/characterUpdater`
     )
 }
 
