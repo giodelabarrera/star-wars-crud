@@ -7,6 +7,7 @@ import SearchForm from '../../components/form/search'
 import Button from '../../components/ui/button'
 
 import './index.scss'
+import Paper from '../../components/ui/paper'
 
 const baseClass = 'sw-CharacterListScreen'
 
@@ -29,6 +30,9 @@ function CharacterListScreen() {
           </Button>
         </div>
       </div>
+      <Paper>
+        <h1>Pepe</h1>
+      </Paper>
       {isMobile ? <CharacterListColumn /> : <CharacterListDataGrid />}
     </div>
   )
