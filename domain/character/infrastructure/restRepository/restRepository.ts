@@ -5,7 +5,8 @@ import Character from '../../domain/character/character'
 import CharacterRepository, {
   RetrieveProps,
   CreateProps,
-  UpdateProps
+  UpdateProps,
+  DeleteProps
 } from '../../domain/characterRepository'
 
 import {ClientMethod, ClientOptions} from './client'
@@ -72,6 +73,14 @@ class RESTRepository implements CharacterRepository {
     const characterRaw = mapSingleResponseToCharacterRaw(response)
     const updatedCharacter = createCharacter(characterRaw)
     return updatedCharacter
+  }
+
+  async delete({id}: DeleteProps): Promise<boolean> {
+    const options = {
+      method: ClientMethod.DELETE
+    }
+    await this.client(`characters/${id}`, options)
+    return true
   }
 }
 
