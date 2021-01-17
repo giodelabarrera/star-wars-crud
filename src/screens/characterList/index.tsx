@@ -3,7 +3,7 @@ import {FaPlus} from 'react-icons/fa'
 
 import useMediaQuery from '../../hooks/useMediaQuery'
 import SearchForm from '../../components/form/search'
-import Button from '../../components/ui/button'
+import Button, {ButtonProps} from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
 import CharacterList from '../../components/character/list'
 import CharacterPreview from '../../components/character/preview'
@@ -27,6 +27,13 @@ function CharacterListScreen() {
     setQuery(e.target.elements.search.value)
   }
 
+  const createCharacterButtonProps = {
+    color: 'primary',
+    ...(isMobile
+      ? {variant: 'text', children: <FaPlus />}
+      : {variant: 'contained', startIcon: <FaPlus />, children: 'Create'})
+  } as ButtonProps
+
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-bar`}>
@@ -35,9 +42,7 @@ function CharacterListScreen() {
         </div>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-createContainer`}>
-          <Button variant="text" color="primary">
-            <FaPlus />
-          </Button>
+          <Button {...createCharacterButtonProps} />
         </div>
       </div>
       {isMobile ? (
