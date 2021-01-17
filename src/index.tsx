@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './styles/theme.scss'
+import './styles/global.scss'
+
 function App() {
   return <h1>Welcome!</h1>
 }
