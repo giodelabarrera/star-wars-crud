@@ -1,13 +1,29 @@
-import CharactersScreen from './screens/charactersScreen'
+import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+
+import Header from './components/layout/header'
+
+import CharacterListScreen from './screens/characterList'
 
 import './app.scss'
 
-export default function App() {
+function App() {
   return (
     <div className="sw-App">
+      <Header />
       <main>
-        <CharactersScreen />
+        <AppRoutes />
       </main>
     </div>
   )
 }
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<CharacterListScreen />} />
+    </Routes>
+  )
+}
+
+export default App
