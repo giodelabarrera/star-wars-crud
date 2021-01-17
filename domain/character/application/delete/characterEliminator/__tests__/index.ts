@@ -8,7 +8,7 @@ afterEach(() => {
   fetchMock.reset()
 })
 
-test('should remove a character by id', async () => {
+test('should delete a character by id', async () => {
   const id = 1
   const endpoint = `${baseUrl}/characters/${id}`
   const fakeResponse = {}
