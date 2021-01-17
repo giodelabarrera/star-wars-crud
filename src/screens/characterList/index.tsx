@@ -24,7 +24,7 @@ function CharacterListScreen() {
         </div>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-createContainer`}>
-          <Button startIcon={<FaPlus />} color="primary">
+          <Button variant="text" startIcon={<FaPlus />} color="primary">
             Create
           </Button>
         </div>

@@ -1,5 +1,7 @@
+$baseClass: '.sw-uiButton';
+
 .sw-uiButton {
-  background-color: var(--c-gray-2);
+  background-color: transparent;
   padding: 8px 16px;
   border: 0;
   border-radius: 4px;
@@ -21,13 +23,34 @@
     margin-left: 8px;
   }
 
-  &-primary {
-    background-color: var(--c-primary);
-    color: var(--c-white);
+  &-text {
+    &#{$baseClass}-default {
+      color: var(--c-gray-2);
+    }
+
+    &#{$baseClass}-primary {
+      color: var(--c-primary);
+    }
+
+    &#{$baseClass}-secondary {
+      color: var(--c-secondary);
+    }
   }
 
-  &-secondary {
-    background-color: var(--c-secondary);
-    color: var(--c-white);
+  &-contained {
+    &#{$baseClass}-default {
+      background-color: var(--c-gray-2);
+      color: var(--c-black);
+    }
+
+    &#{$baseClass}-primary {
+      background-color: var(--c-primary);
+      color: var(--c-white);
+    }
+
+    &#{$baseClass}-secondary {
+      background-color: var(--c-secondary);
+      color: var(--c-white);
+    }
   }
 }
