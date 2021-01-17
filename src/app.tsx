@@ -1,13 +1,15 @@
-import CharactersScreen from './screens/charactersScreen'
+import React from 'react'
 
+import Header from './components/layout/header'
 import './app.scss'
 
-export default function App() {
+function App() {
   return (
     <div className="sw-App">
-      <main>
-        <CharactersScreen />
-      </main>
+      <Header />
+      <main>Welcome</main>
     </div>
   )
 }
+
+export default App

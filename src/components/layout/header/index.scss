@@ -1,0 +1,16 @@
+.sw-LayoutHeader {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-logoContainer {
+    flex: 0 0 auto;
+    padding: 16px;
+    display: inline-flex;
+  }
+}
