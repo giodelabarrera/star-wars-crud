@@ -1,8 +1,10 @@
 import React from 'react'
+import {FaPlus} from 'react-icons/fa'
 
 import useMediaQuery from '../../hooks/useMediaQuery'
 
 import SearchForm from '../../components/form/search'
+import Button from '../../components/ui/button'
 
 const baseClass = 'sw-CharacterListScreen'
 
@@ -18,7 +20,9 @@ function CharacterListScreen() {
         <div>
           <SearchForm onSubmit={handleSearchFormSubmit} />
         </div>
-        <div>Create button</div>
+        <div>
+          <Button startIcon={<FaPlus />}>Create</Button>
+        </div>
       </div>
       {isMobile ? <CharacterListColumn /> : <CharacterListDataGrid />}
     </div>
