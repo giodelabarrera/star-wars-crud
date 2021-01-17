@@ -1,4 +1,5 @@
 .sw-uiButton {
+  background-color: var(--c-gray-2);
   padding: 8px 16px;
   border: 0;
   border-radius: 4px;
@@ -18,5 +19,15 @@
   &-endIcon {
     display: inherit;
     margin-left: 8px;
+  }
+
+  &-primary {
+    background-color: var(--c-primary);
+    color: var(--c-white);
+  }
+
+  &-secondary {
+    background-color: var(--c-secondary);
+    color: var(--c-white);
   }
 }

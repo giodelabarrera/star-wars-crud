@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames'
 
 import './index.scss'
 
@@ -21,7 +22,7 @@ export default function Button({
   ...restProps
 }: ButtonProps) {
   return (
-    <button className={baseClass} {...restProps}>
+    <button className={cx(baseClass, `${baseClass}-${color}`)} {...restProps}>
       <span className={`${baseClass}-label`}>
         {startIcon && (
           <span className={`${baseClass}-startIcon`}>{startIcon}</span>

@@ -6,6 +6,8 @@ import useMediaQuery from '../../hooks/useMediaQuery'
 import SearchForm from '../../components/form/search'
 import Button from '../../components/ui/button'
 
+import './index.scss'
+
 const baseClass = 'sw-CharacterListScreen'
 
 function CharacterListScreen() {
@@ -17,11 +19,14 @@ function CharacterListScreen() {
   return (
     <div className={baseClass}>
       <div className={`${baseClass}-bar`}>
-        <div>
+        <div className={`${baseClass}-searchContainer`}>
           <SearchForm onSubmit={handleSearchFormSubmit} />
         </div>
-        <div>
-          <Button startIcon={<FaPlus />}>Create</Button>
+        <div className={`${baseClass}-offset`} />
+        <div className={`${baseClass}-createContainer`}>
+          <Button startIcon={<FaPlus />} color="primary">
+            Create
+          </Button>
         </div>
       </div>
       {isMobile ? <CharacterListColumn /> : <CharacterListDataGrid />}
