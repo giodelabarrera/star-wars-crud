@@ -1,6 +1,8 @@
 import React, {ReactNode} from 'react'
 import {Character} from '../../../types'
 
+import './index.scss'
+
 const baseClass = 'sw-CharacterList'
 
 type CharacterListProps = {
