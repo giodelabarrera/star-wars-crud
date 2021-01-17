@@ -8,6 +8,7 @@ import Paper from '../../components/ui/paper'
 import CharacterList from '../../components/character/list'
 import CharacterPreview from '../../components/character/preview'
 import {useSearchCharacters} from '../../components/character/hooks'
+import NoResults from './noResults'
 
 import './index.scss'
 
@@ -39,14 +40,23 @@ function CharacterListScreen() {
           </Button>
         </div>
       </div>
-      {isMobile && characters ? (
-        <CharacterList characters={characters}>
-          {character => (
-            <Paper>
-              <CharacterPreview character={character} onEditClick={() => {}} />
-            </Paper>
+      {isMobile ? (
+        <>
+          {characters.length ? (
+            <CharacterList characters={characters}>
+              {character => (
+                <Paper>
+                  <CharacterPreview
+                    character={character}
+                    onEditClick={() => {}}
+                  />
+                </Paper>
+              )}
+            </CharacterList>
+          ) : (
+            <NoResults query={query} />
           )}
-        </CharacterList>
+        </>
       ) : (
         <CharacterListDataGrid />
       )}
