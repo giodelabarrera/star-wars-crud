@@ -1,8 +1,8 @@
 import Character from './character/character'
 
 export type SearchProps = {
-  query: string
-  fields: Record<string, unknown>
+  query?: string
+  fields?: Record<string, unknown> | null
 }
 
 export type RetrieveProps = {
@@ -20,8 +20,9 @@ export type UpdateProps = {
 export type DeleteProps = {
   id: number
 }
+
 interface CharacterRepository {
-  search(params?: SearchProps): Promise<Character[]>
+  search(params: SearchProps): Promise<Character[]>
 
   retrieve(params: RetrieveProps): Promise<Character>
 

@@ -4,7 +4,11 @@ import createCharacter, {CharacterRaw} from '../../../domain/character'
 export default class CharacterCreator {
   readonly characterRepository: CharacterRepository
 
-  constructor({characterRepository}) {
+  constructor({
+    characterRepository
+  }: {
+    characterRepository: CharacterRepository
+  }) {
     this.characterRepository = characterRepository
   }
 

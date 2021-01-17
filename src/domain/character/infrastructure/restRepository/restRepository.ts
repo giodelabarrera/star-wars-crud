@@ -3,6 +3,7 @@ import {stringify} from 'query-string'
 import createCharacter from '../../domain/character'
 import Character from '../../domain/character/character'
 import CharacterRepository, {
+  SearchProps,
   RetrieveProps,
   CreateProps,
   UpdateProps,
@@ -18,7 +19,7 @@ class RESTRepository implements CharacterRepository {
     this.client = client
   }
 
-  async search({query = '', fields = null} = {}): Promise<Character[]> {
+  async search({query = '', fields = null}: SearchProps): Promise<Character[]> {
     const params = {query, fields}
     const queryString = mapSearchParamsToQueryString(params)
 

@@ -1,12 +1,31 @@
 {
   "name": "seat-code-challenge",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "fetch-mock": "^9.11.0",
+    "husky": "^4.3.8",
+    "json-server": "^0.16.3",
+    "lint-staged": "^10.5.3",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+  },
   "scripts": {
-    "dev": "next dev",
-    "dev-debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
-    "start": "next start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "jest --watch",
     "test-debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "api-start": "json-server --watch db.json --port 3306",
@@ -16,47 +35,23 @@
     "check-format": "npm run prettier -- --list-different",
     "type-check": "tsc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/giodelabarrera/seat-code-challenge.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/giodelabarrera/seat-code-challenge/issues"
-  },
-  "homepage": "https://github.com/giodelabarrera/seat-code-challenge#readme",
-  "dependencies": {
-    "next": "^10.0.5",
-    "query-string": "^6.13.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^11.2.3",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.21",
-    "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.13.0",
-    "@typescript-eslint/parser": "^4.13.0",
-    "babel-jest": "^25.2.3",
-    "eslint": "^7.18.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-react": "^7.22.0",
-    "fetch-mock": "^9.11.0",
-    "husky": "^4.3.8",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
-    "jest-watch-typeahead": "^0.6.1",
-    "json-server": "^0.16.3",
-    "lint-staged": "^10.5.3",
-    "node-fetch": "^2.6.1",
-    "prettier": "^2.2.1",
-    "sass": "^1.32.4",
-    "typescript": "^4.1.3"
-  },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "husky": {
     "hooks": {

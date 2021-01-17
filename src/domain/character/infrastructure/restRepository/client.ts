@@ -23,7 +23,7 @@ export default async function client(
     ...customConfig
   }: ClientOptions = {}
 ) {
-  const config = {
+  const config: Record<string, unknown> = {
     method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
