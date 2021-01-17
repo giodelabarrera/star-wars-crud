@@ -1,6 +1,14 @@
 import '../styles/theme.scss'
 import '../styles/global.scss'
 
-export default function App({Component, pageProps}) {
-  return <Component {...pageProps} />
+import {DomainProvider} from '../context/domain'
+
+import domain from '../domain'
+
+export default function CustomApp({Component, pageProps}) {
+  return (
+    <DomainProvider domain={domain}>
+      <Component {...pageProps} />
+    </DomainProvider>
+  )
 }
