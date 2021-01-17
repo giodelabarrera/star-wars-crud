@@ -1,7 +1,13 @@
+import CharactersScreen from './screens/charactersScreen'
+
+import './app.scss'
+
 export default function App() {
   return (
     <div className="sw-App">
-      <main></main>
+      <main>
+        <CharactersScreen />
+      </main>
     </div>
   )
 }

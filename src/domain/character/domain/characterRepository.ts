@@ -22,7 +22,7 @@ export type DeleteProps = {
 }
 
 interface CharacterRepository {
-  search(params: SearchProps): Promise<Character[]>
+  search(params?: SearchProps): Promise<Character[]>
 
   retrieve(params: RetrieveProps): Promise<Character>
 

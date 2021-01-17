@@ -25,7 +25,7 @@ type EntryPointFunction = {
   execute: (...params) => Promise<any>
 }
 
-type EntryPoint = {
+export type EntryPoint = {
   get: (nameOfUseCase: string) => EntryPointFunction
 }
 

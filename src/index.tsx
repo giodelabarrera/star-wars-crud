@@ -1,16 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import AppProviders from './context/appProviders'
+import App from './app'
+
 import './styles/theme.scss'
 import './styles/global.scss'
 
-function App() {
-  return <h1>Welcome!</h1>
-}
-
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppProviders>
+      <App />
+    </AppProviders>
   </React.StrictMode>,
   document.getElementById('root')
 )
