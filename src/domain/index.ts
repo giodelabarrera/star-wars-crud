@@ -25,7 +25,7 @@ type EntryPointFunction = {
   execute: (...params) => Promise<any>
 }
 
-type EntryPoint = {
+export type EntryPoint = {
   get: (nameOfUseCase: string) => EntryPointFunction
 }
 
@@ -33,6 +33,7 @@ const entryPoint: EntryPoint = {
   get: nameOfUseCase => ({
     async execute(...params) {
       const {default: useCaseFactory} = await USE_CASES[nameOfUseCase]()
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       return useCaseFactory().execute(...params)
     }
   })

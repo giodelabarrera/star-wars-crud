@@ -7,5 +7,5 @@ type CharacterGenderRaw = {
 export default function createCharacterGender({
   value
 }: CharacterGenderRaw): CharacterGender {
-  return new CharacterGender({value: <CharacterGenderType>value})
+  return new CharacterGender({value: value as CharacterGenderType})
 }

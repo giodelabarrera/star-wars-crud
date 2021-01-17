@@ -1,17 +1,31 @@
+const path = require('path')
+const resolve = require('resolve')
+
+process.env.BABEL_ENV = 'test'
+process.env.NODE_ENV = 'test'
+process.env.PUBLIC_URL = ''
+
+require('react-scripts/config/env')
+
 module.exports = {
-  roots: ['<rootDir>'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
-  testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  roots: ['<rootDir>/src'],
+  testEnvironment: resolve.sync('jest-environment-jsdom', {
+    basedir: require.resolve('jest')
+  }),
+  moduleDirectories: ['node_modules', path.join(__dirname, './src')],
   transform: {
-    '^.+\\.(ts|tsx)$': 'babel-jest'
+    '^.+\\.(js|jsx|ts|tsx)$': require.resolve(
+      'react-scripts/config/jest/babelTransform'
+    ),
+    '^.+\\.css$': require.resolve('react-scripts/config/jest/cssTransform.js'),
+    '^(?!.*\\.(js|jsx|css|json)$)': require.resolve(
+      'react-scripts/config/jest/fileTransform.js'
+    )
   },
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  resetMocks: true,
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname'
-  ],
-  moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js'
-  }
+  ]
 }
