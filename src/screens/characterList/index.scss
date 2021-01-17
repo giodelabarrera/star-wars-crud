@@ -6,7 +6,6 @@
   }
 
   &-searchContainer {
-    padding-right: 16px;
     width: 100%;
     display: flex;
 
@@ -17,5 +16,11 @@
 
   &-offset {
     flex: 1 1 auto;
+  }
+
+  &-createContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

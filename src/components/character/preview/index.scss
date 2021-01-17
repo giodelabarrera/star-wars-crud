@@ -1,4 +1,16 @@
 .sw-CharacterPreview {
+  &-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &-name {
+    margin-bottom: 0;
+  }
+
   &-info {
     padding: 0;
     list-style-type: none;

@@ -1,5 +1,7 @@
 import React from 'react'
+import {FaPen} from 'react-icons/fa'
 import {Character} from '../../../types'
+import Button from '../../ui/button'
 
 import './index.scss'
 
@@ -7,9 +9,13 @@ const baseClass = 'sw-CharacterPreview'
 
 type CharacterPreviewProps = {
   character: Character
+  onEditClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export default function CharacterPreview({character}: CharacterPreviewProps) {
+export default function CharacterPreview({
+  character,
+  onEditClick
+}: CharacterPreviewProps) {
   const {
     id,
     name,
@@ -22,8 +28,15 @@ export default function CharacterPreview({character}: CharacterPreviewProps) {
     eyeColor
   } = character
   return (
-    <div className={baseClass} data-id={id}>
-      <h2>{name}</h2>
+    <section className={baseClass} data-id={id}>
+      <div className={`${baseClass}-header`}>
+        <h2 className={`${baseClass}-name`}>{name}</h2>
+        <div>
+          <Button color="primary" onClick={onEditClick}>
+            <FaPen />
+          </Button>
+        </div>
+      </div>
       <ul className={`${baseClass}-info`}>
         <li>
           <strong>Birth year: </strong>
@@ -54,6 +67,6 @@ export default function CharacterPreview({character}: CharacterPreviewProps) {
           {eyeColor}
         </li>
       </ul>
-    </div>
+    </section>
   )
 }

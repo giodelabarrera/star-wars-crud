@@ -41,8 +41,8 @@ function CharacterListScreen() {
         </div>
         <div className={`${baseClass}-offset`} />
         <div className={`${baseClass}-createContainer`}>
-          <Button variant="text" startIcon={<FaPlus />} color="primary">
-            Create
+          <Button variant="text" color="primary">
+            <FaPlus />
           </Button>
         </div>
       </div>
@@ -50,7 +50,7 @@ function CharacterListScreen() {
         <CharacterList characters={data}>
           {character => (
             <Paper>
-              <CharacterPreview character={character} />
+              <CharacterPreview character={character} onEditClick={() => {}} />
             </Paper>
           )}
         </CharacterList>
