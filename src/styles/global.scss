@@ -1,11 +1,6 @@
-* {
-  box-sizing: border-box;
-  outline: none;
-}
-
 html,
 body {
   font-family: var(--ff-sans-serif);
-  margin: 0;
   background-color: var(--c-background);
+  color: var(--c-text);
 }

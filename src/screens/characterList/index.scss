@@ -1,0 +1,26 @@
+.sw-CharacterListScreen {
+  &-bar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+  }
+
+  &-searchContainer {
+    width: 100%;
+    display: flex;
+
+    @media (min-width: 576px) {
+      width: auto;
+    }
+  }
+
+  &-offset {
+    flex: 1 1 auto;
+  }
+
+  &-createContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

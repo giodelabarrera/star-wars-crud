@@ -2,11 +2,24 @@
   --ff-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
-  --c-gray: #9ca1a9;
-  --c-white: #ffffff;
-  --c-black: #505763;
-  --p-base: 8px;
+  --c-primary: #3449d7;
+  --c-primary-light: #7475ff;
+  --c-primary-dark: #0021a4;
 
-  --c-font: var(--c-black);
-  --c-background: #f4f7fa;
+  --c-secondary: #dea1a6;
+  --c-secondary-light: #ffd2d7;
+  --c-secondary-dark: #ab7277;
+
+  --c-gray: #adbacf;
+  --c-gray-1: #f4f7fa;
+  --c-gray-2: #e4e5e9;
+  --c-gray-3: #adbacf;
+  --c-gray-4: #9ca1a9;
+  --c-gray-5: #505763;
+
+  --c-white: #fff;
+  --c-black: #000;
+
+  --c-text: #28303f;
+  --c-background: var(--c-gray-1);
 }

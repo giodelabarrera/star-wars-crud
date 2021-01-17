@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap-reboot.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
