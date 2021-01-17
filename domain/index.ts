@@ -14,6 +14,10 @@ const USE_CASES = {
   character__update_character_use_case: () =>
     import(
       /* webpackChunkName: "character__update_character_use_case" */ `./character/application/update/characterUpdater`
+    ),
+  character__delete_character_use_case: () =>
+    import(
+      /* webpackChunkName: "character__remove_character_use_case" */ `./character/application/delete/characterEliminator`
     )
 }
 

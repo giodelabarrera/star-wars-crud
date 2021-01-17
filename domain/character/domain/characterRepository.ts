@@ -17,6 +17,9 @@ export type UpdateProps = {
   character: Character
 }
 
+export type DeleteProps = {
+  id: number
+}
 interface CharacterRepository {
   search(params?: SearchProps): Promise<Character[]>
 
@@ -25,6 +28,8 @@ interface CharacterRepository {
   create(params: CreateProps): Promise<Character>
 
   update(params: UpdateProps): Promise<Character>
+
+  delete(params: DeleteProps): Promise<boolean>
 }
 
 export default CharacterRepository
