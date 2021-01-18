@@ -6,9 +6,9 @@ import Paper from '../../components/ui/paper'
 
 import './index.scss'
 
-const baseClass = 'sw-CharacterCreateScreen'
+const baseClass = 'sw-CharacterEditScreen'
 
-export default function CharacterCreateScreen() {
+export default function CharacterEditScreen() {
   const handleCharacterForm = data => {}
 
   return (
