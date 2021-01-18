@@ -48,10 +48,15 @@ function TableCell({
 }
 
 function SortDirection({value}) {
-  let SortIcon = null
-  if (value === 'asc') SortIcon = <FaArrowUp />
-  else if (value === 'desc') SortIcon = <FaArrowDown />
-  return <span className={`${baseClass}-sortDirection`}>{SortIcon}</span>
+  return (
+    <span className={`${baseClass}-sortDirection`}>
+      {value === 'asc' ? (
+        <FaArrowUp />
+      ) : value === 'desc' ? (
+        <FaArrowDown />
+      ) : null}
+    </span>
+  )
 }
 
 function nextDirection(currentDirection): TableCellDirection {
