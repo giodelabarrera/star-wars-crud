@@ -1,14 +1,18 @@
+import cx from 'classnames'
+import {FaArrowDown, FaArrowUp} from 'react-icons/fa'
+
 import './index.scss'
 
 const baseClass = 'sw-uiTableCell'
 
-type Direction = 'asc' | 'desc' | false
+export type TableCellDirection = 'asc' | 'desc' | false
+export type TableCellOnSort = (direction: TableCellDirection) => void
 
 type TableCellProps = {
   variant?: 'body' | 'head'
   isSortable?: boolean
-  sortDirection?: Direction
-  onSort?: (direction: Direction) => void
+  sortDirection?: TableCellDirection
+  onSort?: TableCellOnSort
 } & React.DetailedHTMLProps<
   React.TdHTMLAttributes<HTMLTableDataCellElement>,
   HTMLTableDataCellElement
@@ -28,14 +32,29 @@ function TableCell({
     onSort(nextDirection(sortDirection))
   }
 
+  const componentProps = {
+    className: cx(baseClass, {[`${baseClass}-isSortable`]: isSortable}),
+    ...(isSortable && {onClick: handleClick})
+  }
+
   return (
-    <Component className={baseClass} onClick={handleClick}>
-      {children}
+    <Component {...componentProps}>
+      <span className={`${baseClass}-content`}>
+        {children}
+        {isSortable && <SortDirection value={sortDirection} />}
+      </span>
     </Component>
   )
 }
 
-function nextDirection(currentDirection): Direction {
+function SortDirection({value}) {
+  let SortIcon = null
+  if (value === 'asc') SortIcon = <FaArrowUp />
+  else if (value === 'desc') SortIcon = <FaArrowDown />
+  return <span className={`${baseClass}-sortDirection`}>{SortIcon}</span>
+}
+
+function nextDirection(currentDirection): TableCellDirection {
   if (currentDirection === 'asc') return 'desc'
   else if (currentDirection === 'desc') return false
   else if (currentDirection === false) return 'asc'

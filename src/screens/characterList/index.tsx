@@ -6,6 +6,7 @@ import SearchForm from '../../components/form/search'
 import Button, {ButtonProps} from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
 import Link from '../../components/ui/link'
+import {TableCellDirection} from '../../components/ui/tableCell'
 import CharacterList from '../../components/character/list'
 import CharacterPreview from '../../components/character/preview'
 import {useSearchCharacters} from '../../components/character/hooks'
@@ -18,6 +19,39 @@ const baseClass = 'sw-CharacterListScreen'
 
 function CharacterListScreen() {
   const [query, setQuery] = useState('')
+
+  const [
+    nameSortDirection,
+    setNameSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    birthYearSortDirection,
+    setBirthYearSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    genderSortDirection,
+    setGenderSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    heightSortDirection,
+    setHeightSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    massSortDirection,
+    setMassSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    hairColorSortDirection,
+    setHairColorSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    skinColorSortDirection,
+    setSkinColorSortDirection
+  ] = useState<TableCellDirection>(false)
+  const [
+    eyeColorSortDirection,
+    setEyeColorSortDirection
+  ] = useState<TableCellDirection>(false)
 
   const isWide = useMediaQuery('(min-width: 576px)')
   const isMobile = !isWide
@@ -70,6 +104,22 @@ function CharacterListScreen() {
             characters={characters}
             onEditClick={() => {}}
             editLink={props => <Link {...props} to="/" />}
+            nameSortDirection={nameSortDirection}
+            birthYearSortDirection={birthYearSortDirection}
+            genderSortDirection={genderSortDirection}
+            heightSortDirection={heightSortDirection}
+            massSortDirection={massSortDirection}
+            hairColorSortDirection={hairColorSortDirection}
+            skinColorSortDirection={skinColorSortDirection}
+            eyeColorSortDirection={eyeColorSortDirection}
+            onNameSort={direction => setNameSortDirection(direction)}
+            onBirthYearSort={direction => setBirthYearSortDirection(direction)}
+            onGenderSort={direction => setGenderSortDirection(direction)}
+            onHeightSort={direction => setHeightSortDirection(direction)}
+            onMassSort={direction => setMassSortDirection(direction)}
+            onHairColorSort={direction => setHairColorSortDirection(direction)}
+            onSkinColorSort={direction => setSkinColorSortDirection(direction)}
+            onEyeColorSort={direction => setEyeColorSortDirection(direction)}
           />
         </Paper>
       )}

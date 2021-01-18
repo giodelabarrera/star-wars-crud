@@ -1,3 +1,19 @@
 .sw-uiTableCell {
   padding: 8px;
+
+  &-isSortable {
+    cursor: pointer;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &-sortDirection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 4px;
+  }
 }
