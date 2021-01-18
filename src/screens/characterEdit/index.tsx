@@ -8,6 +8,17 @@ import './index.scss'
 
 const baseClass = 'sw-CharacterEditScreen'
 
+const initialData = {
+  name: '',
+  birthYear: '',
+  gender: '',
+  height: null,
+  mass: null,
+  hairColor: '',
+  skinColor: '',
+  eyeColor: ''
+}
+
 export default function CharacterEditScreen() {
   const handleCharacterForm = data => {}
 
@@ -15,6 +26,7 @@ export default function CharacterEditScreen() {
     <div className={baseClass}>
       <Paper>
         <CharacterForm
+          initialData={initialData}
           onSubmit={handleCharacterForm}
           secondAction={
             <Button
