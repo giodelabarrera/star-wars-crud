@@ -1,4 +1,4 @@
-import {useQuery} from 'react-query'
+import {useQuery, useMutation} from 'react-query'
 
 import {useDomain} from '../../../context/domain'
 
@@ -32,4 +32,11 @@ function useSearchCharacters(query, sortFields) {
   return {...result, characters: result.data ?? loadingCharacters}
 }
 
-export {useSearchCharacters}
+function useCreateCharacter() {
+  const domain = useDomain()
+  return useMutation(character =>
+    domain.get('character__create_character_use_case').execute(character)
+  )
+}
+
+export {useSearchCharacters, useCreateCharacter}

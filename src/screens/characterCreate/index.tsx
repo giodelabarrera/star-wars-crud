@@ -1,4 +1,5 @@
 import CharacterForm from '../../components/character/form'
+import {useCreateCharacter} from '../../components/character/hooks'
 import Paper from '../../components/ui/paper'
 
 import './index.scss'
@@ -17,7 +18,11 @@ const initialData = {
 }
 
 export default function CharacterCreateScreen() {
-  const handleCharacterForm = data => {}
+  const {mutate} = useCreateCharacter()
+
+  const handleCharacterForm = data => {
+    mutate(data)
+  }
 
   return (
     <div className={baseClass}>
