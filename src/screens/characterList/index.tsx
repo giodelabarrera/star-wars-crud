@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {FaPlus} from 'react-icons/fa'
 
 import useMediaQuery from '../../hooks/useMediaQuery'
@@ -18,6 +19,8 @@ import './index.scss'
 const baseClass = 'sw-CharacterListScreen'
 
 function CharacterListScreen() {
+  const navigate = useNavigate()
+
   const [query, setQuery] = useState('')
 
   const [
@@ -106,8 +109,17 @@ function CharacterListScreen() {
     setEyeColorSortDirection(direction)
   }
 
+  const handleCreateClick = () => {
+    navigate(`/create`)
+  }
+
+  const handleEditClick = id => {
+    navigate(`/${id}`)
+  }
+
   const createCharacterButtonProps = {
     color: 'primary',
+    onClick: handleCreateClick,
     ...(isMobile
       ? {variant: 'text', children: <FaPlus />}
       : {variant: 'contained', startIcon: <FaPlus />, children: 'Create'})
@@ -132,7 +144,7 @@ function CharacterListScreen() {
                 <Paper>
                   <CharacterPreview
                     character={character}
-                    onEditClick={() => {}}
+                    onEditClick={handleEditClick}
                   />
                 </Paper>
               )}
@@ -145,8 +157,8 @@ function CharacterListScreen() {
         <Paper>
           <CharacterDataTable
             characters={characters}
-            onEditClick={() => {}}
-            editLink={props => <Link {...props} to="/" />}
+            onEditClick={handleEditClick}
+            editLink={id => props => <Link {...props} to={`/${id}`} />}
             nameSortDirection={nameSortDirection}
             birthYearSortDirection={birthYearSortDirection}
             genderSortDirection={genderSortDirection}
