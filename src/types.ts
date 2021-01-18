@@ -3,8 +3,8 @@ export type Character = {
   name: string
   birthYear: string
   gender: string
-  height?: string
-  mass?: string
+  height?: number
+  mass?: number
   hairColor?: string
   skinColor?: string
   eyeColor?: string

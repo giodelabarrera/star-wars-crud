@@ -3,8 +3,8 @@ import CharacterGender from '../characterGender/characterGender'
 type CharacterProps = {
   id?: number
   name: string
-  height: string
-  mass: string
+  height: number
+  mass: number
   hairColor: string
   skinColor: string
   eyeColor: string
@@ -15,8 +15,8 @@ type CharacterProps = {
 export default class Character {
   readonly id: number | undefined
   readonly name: string
-  readonly height: string
-  readonly mass: string
+  readonly height: number
+  readonly mass: number
   readonly hairColor: string
   readonly skinColor: string
   readonly eyeColor: string

@@ -4,8 +4,8 @@ import Character from './character'
 export type CharacterRaw = {
   id?: number
   name: string
-  height: string
-  mass: string
+  height: number
+  mass: number
   hairColor: string
   skinColor: string
   eyeColor: string
