@@ -1,0 +1,8 @@
+.sw-uiLink {
+  color: var(--c-primary);
+
+  &:hover {
+    color: var(--c-primary-dark);
+    text-decoration: underline;
+  }
+}

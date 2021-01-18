@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 import './index.scss'
 
-type ButtonProps = {
+export type ButtonProps = {
   color?: 'default' | 'primary' | 'secondary'
   variant?: 'contained' | 'text'
   startIcon?: React.ReactNode
