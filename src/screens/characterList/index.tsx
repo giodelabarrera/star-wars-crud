@@ -53,14 +53,57 @@ function CharacterListScreen() {
     setEyeColorSortDirection
   ] = useState<TableCellDirection>(false)
 
+  const sortFields = mapSortDirectionFieldsToSortFields({
+    nameSortDirection,
+    birthYearSortDirection,
+    genderSortDirection,
+    heightSortDirection,
+    massSortDirection,
+    hairColorSortDirection,
+    skinColorSortDirection,
+    eyeColorSortDirection
+  })
+
   const isWide = useMediaQuery('(min-width: 576px)')
   const isMobile = !isWide
 
-  const {isLoading, characters} = useSearchCharacters(query)
+  const {isLoading, characters} = useSearchCharacters(query, sortFields)
 
   const handleSearchFormSubmit = e => {
     e.preventDefault()
     setQuery(e.target.elements.search.value)
+  }
+
+  const handleNameSort = direction => {
+    setNameSortDirection(direction)
+  }
+
+  const handleBirthYearSort = direction => {
+    setBirthYearSortDirection(direction)
+  }
+
+  const handleGenderSort = direction => {
+    setGenderSortDirection(direction)
+  }
+
+  const handleHeightSort = direction => {
+    setHeightSortDirection(direction)
+  }
+
+  const handleMassSort = direction => {
+    setMassSortDirection(direction)
+  }
+
+  const handleHairColorSort = direction => {
+    setHairColorSortDirection(direction)
+  }
+
+  const handleSkinColorSort = direction => {
+    setSkinColorSortDirection(direction)
+  }
+
+  const handleEyeColorSort = direction => {
+    setEyeColorSortDirection(direction)
   }
 
   const createCharacterButtonProps = {
@@ -112,19 +155,52 @@ function CharacterListScreen() {
             hairColorSortDirection={hairColorSortDirection}
             skinColorSortDirection={skinColorSortDirection}
             eyeColorSortDirection={eyeColorSortDirection}
-            onNameSort={direction => setNameSortDirection(direction)}
-            onBirthYearSort={direction => setBirthYearSortDirection(direction)}
-            onGenderSort={direction => setGenderSortDirection(direction)}
-            onHeightSort={direction => setHeightSortDirection(direction)}
-            onMassSort={direction => setMassSortDirection(direction)}
-            onHairColorSort={direction => setHairColorSortDirection(direction)}
-            onSkinColorSort={direction => setSkinColorSortDirection(direction)}
-            onEyeColorSort={direction => setEyeColorSortDirection(direction)}
+            onNameSort={handleNameSort}
+            onBirthYearSort={handleBirthYearSort}
+            onGenderSort={handleGenderSort}
+            onHeightSort={handleHeightSort}
+            onMassSort={handleMassSort}
+            onHairColorSort={handleHairColorSort}
+            onSkinColorSort={handleSkinColorSort}
+            onEyeColorSort={handleEyeColorSort}
           />
         </Paper>
       )}
     </div>
   )
+}
+
+function mapSortDirectionFieldsToSortFields({
+  nameSortDirection: name,
+  birthYearSortDirection: birthYear,
+  genderSortDirection: gender,
+  heightSortDirection: height,
+  massSortDirection: mass,
+  hairColorSortDirection: hairColor,
+  skinColorSortDirection: skinColor,
+  eyeColorSortDirection: eyeColor
+}) {
+  const values = [
+    name,
+    birthYear,
+    gender,
+    height,
+    mass,
+    hairColor,
+    skinColor,
+    eyeColor
+  ]
+  if (values.every(value => value === false)) return null
+  return {
+    ...(name && {name}),
+    ...(birthYear && {birthYear}),
+    ...(gender && {gender}),
+    ...(height && {height}),
+    ...(mass && {mass}),
+    ...(hairColor && {hairColor}),
+    ...(skinColor && {skinColor}),
+    ...(eyeColor && {eyeColor})
+  }
 }
 
 export default CharacterListScreen

@@ -18,13 +18,15 @@ const loadingCharacters = Array.from({length: 10}, (v, index) => ({
   ...loadingCharacter
 }))
 
-function useSearchCharacters(query) {
+function useSearchCharacters(query, sortFields) {
   const domain = useDomain()
 
   const result = useQuery({
-    queryKey: ['searchCharacters', {query}],
+    queryKey: ['searchCharacters', {query, fields: sortFields}],
     queryFn: () =>
-      domain.get('character__search_characters_use_case').execute({query})
+      domain
+        .get('character__search_characters_use_case')
+        .execute({query, fields: sortFields})
   })
 
   return {...result, characters: result.data ?? loadingCharacters}

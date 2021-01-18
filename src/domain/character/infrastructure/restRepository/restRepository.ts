@@ -84,12 +84,26 @@ class RESTRepository implements CharacterRepository {
   }
 }
 
+function mapFieldsToFieldsData(fields) {
+  return {
+    ...(fields.name && {name: fields.name}),
+    ...(fields.height && {height: fields.height}),
+    ...(fields.mass && {mass: fields.mass}),
+    ...(fields.gender && {gender: fields.gender}),
+    ...(fields.hairColor && {hair_color: fields.hairColor}),
+    ...(fields.skinColor && {skin_color: fields.skinColor}),
+    ...(fields.eyeColor && {eye_color: fields.eyeColor}),
+    ...(fields.birthYear && {birth_year: fields.birthYear})
+  }
+}
+
 function mapSearchParamsToQueryString({query, fields}) {
   const parsedParams: Record<string, unknown> = {}
   if (query) parsedParams.q = query
   if (fields) {
-    parsedParams._sort = Object.keys(fields).join(',')
-    parsedParams._order = Object.values(fields).join(',')
+    const fieldsData = mapFieldsToFieldsData(fields)
+    parsedParams._sort = Object.keys(fieldsData).join(',')
+    parsedParams._order = Object.values(fieldsData).join(',')
   }
   return stringify(parsedParams)
 }
