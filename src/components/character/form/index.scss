@@ -1,0 +1,20 @@
+.sw-CharacterForm {
+  &-textField {
+    margin-bottom: 16px;
+  }
+
+  &-fieldGroup {
+    margin-bottom: 32px;
+  }
+
+  &-actionRow {
+    background-color: var(--c-gray-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -16px;
+  }
+}

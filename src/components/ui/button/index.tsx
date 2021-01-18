@@ -21,6 +21,7 @@ export default function Button({
   startIcon,
   endIcon,
   children,
+  className: classNameProp,
   ...restProps
 }: ButtonProps) {
   return (
@@ -28,7 +29,8 @@ export default function Button({
       className={cx(
         baseClass,
         `${baseClass}-${variant}`,
-        `${baseClass}-${color}`
+        `${baseClass}-${color}`,
+        classNameProp
       )}
       {...restProps}
     >
