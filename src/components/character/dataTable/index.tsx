@@ -2,6 +2,11 @@ import {FaPen} from 'react-icons/fa'
 
 import {Character} from '../../../types'
 import Button from '../../ui/button'
+import Table from '../../ui/table'
+import TableHead from '../../ui/tableHead'
+import TableBody from '../../ui/tableBody'
+import TableRow from '../../ui/tableRow'
+import TableCell from '../../ui/tableCell'
 
 import './index.scss'
 
@@ -19,47 +24,49 @@ export default function CharacterDataTable({
   editLink: EditLink
 }: CharacterDataTableProps) {
   return (
-    <table className={baseClass}>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Birth year</th>
-          <th>Gender</th>
-          <th>Height</th>
-          <th>Mass</th>
-          <th>Hair color</th>
-          <th>Skin color</th>
-          <th>Eye color</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {characters.map(character => (
-          <tr key={character.id}>
-            <td>
-              <EditLink>{character.name}</EditLink>
-            </td>
-            <td>{character.birthYear}</td>
-            <td>{character.gender}</td>
-            <td>{character.height}</td>
-            <td>{character.mass}</td>
-            <td>{character.hairColor}</td>
-            <td>{character.skinColor}</td>
-            <td>{character.eyeColor}</td>
-            <td>
-              <div>
-                <Button
-                  startIcon={<FaPen />}
-                  color="primary"
-                  onClick={onEditClick}
-                >
-                  Edit
-                </Button>
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className={baseClass}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell variant="head">Name</TableCell>
+            <TableCell variant="head">BirTableCell year</TableCell>
+            <TableCell variant="head">Gender</TableCell>
+            <TableCell variant="head">Height</TableCell>
+            <TableCell variant="head">Mass</TableCell>
+            <TableCell variant="head">Hair color</TableCell>
+            <TableCell variant="head">Skin color</TableCell>
+            <TableCell variant="head">Eye color</TableCell>
+            <TableCell />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {characters.map(character => (
+            <TableRow key={character.id}>
+              <TableCell>
+                <EditLink>{character.name}</EditLink>
+              </TableCell>
+              <TableCell>{character.birthYear}</TableCell>
+              <TableCell>{character.gender}</TableCell>
+              <TableCell>{character.height}</TableCell>
+              <TableCell>{character.mass}</TableCell>
+              <TableCell>{character.hairColor}</TableCell>
+              <TableCell>{character.skinColor}</TableCell>
+              <TableCell>{character.eyeColor}</TableCell>
+              <TableCell>
+                <div>
+                  <Button
+                    startIcon={<FaPen />}
+                    color="primary"
+                    onClick={onEditClick}
+                  >
+                    Edit
+                  </Button>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
