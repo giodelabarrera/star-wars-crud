@@ -20,16 +20,24 @@ const loadingCharacters = Array.from({length: 10}, (v, index) => ({
 
 function useSearchCharacters(query, sortFields) {
   const domain = useDomain()
-
   const result = useQuery({
-    queryKey: ['searchCharacters', {query, fields: sortFields}],
+    queryKey: ['search_characters', {query, fields: sortFields}],
     queryFn: () =>
       domain
         .get('character__search_characters_use_case')
         .execute({query, fields: sortFields})
   })
-
   return {...result, characters: result.data ?? loadingCharacters}
+}
+
+function useCharacter(id) {
+  const domain = useDomain()
+  const result = useQuery({
+    queryKey: ['retrieve-character', {id}],
+    queryFn: () =>
+      domain.get('character__retrieve_character_use_case').execute({id})
+  })
+  return {...result, character: result.data ?? loadingCharacter}
 }
 
 function useCreateCharacter() {
@@ -39,4 +47,4 @@ function useCreateCharacter() {
   )
 }
 
-export {useSearchCharacters, useCreateCharacter}
+export {useSearchCharacters, useCharacter, useCreateCharacter}

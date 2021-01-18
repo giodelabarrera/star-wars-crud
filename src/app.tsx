@@ -5,6 +5,7 @@ import Header from './components/layout/header'
 
 import CharacterListScreen from './screens/characterList'
 import CharacterCreateScreen from './screens/characterCreate'
+import CharacterPreviewScreen from './screens/characterPreview'
 
 import './app.scss'
 
@@ -24,6 +25,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<CharacterListScreen />} />
       <Route path="/create" element={<CharacterCreateScreen />} />
+      <Route path="/:id/preview" element={<CharacterPreviewScreen />} />
     </Routes>
   )
 }
