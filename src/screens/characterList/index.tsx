@@ -5,9 +5,11 @@ import useMediaQuery from '../../hooks/useMediaQuery'
 import SearchForm from '../../components/form/search'
 import Button, {ButtonProps} from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
+import Link from '../../components/ui/link'
 import CharacterList from '../../components/character/list'
 import CharacterPreview from '../../components/character/preview'
 import {useSearchCharacters} from '../../components/character/hooks'
+import CharacterDataTable from '../../components/character/dataTable'
 import NoResults from './noResults'
 
 import './index.scss'
@@ -63,14 +65,16 @@ function CharacterListScreen() {
           )}
         </>
       ) : (
-        <CharacterListDataGrid />
+        <Paper>
+          <CharacterDataTable
+            characters={characters}
+            onEditClick={() => {}}
+            editLink={props => <Link {...props} to="/" />}
+          />
+        </Paper>
       )}
     </div>
   )
-}
-
-function CharacterListDataGrid() {
-  return <div>Tabla</div>
 }
 
 export default CharacterListScreen
