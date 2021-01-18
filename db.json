@@ -245,29 +245,6 @@
       "created": "2014-12-10T16:16:29.192000Z",
       "edited": "2014-12-20T21:17:50.325000Z",
       "url": "http://swapi.dev/api/people/10/"
-    },
-    {
-      "name": "Anakin Skywalker",
-      "height": 180,
-      "mass": 90,
-      "hair_color": "brown",
-      "skin_color": "fair",
-      "eye_color": "blue",
-      "birth_year": "1990",
-      "gender": "male",
-      "id": 11
-    },
-    {
-      "id": 12
-    },
-    {
-      "id": 13
-    },
-    {
-      "id": 14
-    },
-    {
-      "id": 15
     }
   ]
 }
