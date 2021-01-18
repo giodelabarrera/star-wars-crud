@@ -4,6 +4,8 @@ import CharacterForm from '../../components/character/form'
 import Button from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
 
+import './index.scss'
+
 const baseClass = 'sw-CharacterListScreen'
 
 export default function CharacterCreateScreen() {
@@ -15,7 +17,11 @@ export default function CharacterCreateScreen() {
         <CharacterForm
           onSubmit={handleCharacterForm}
           secondAction={
-            <Button startIcon={<FaTrash />} variant="text" color="secondary">
+            <Button
+              startIcon={<FaTrash />}
+              variant="text"
+              className={`${baseClass}-deleteButton`}
+            >
               Delete
             </Button>
           }
