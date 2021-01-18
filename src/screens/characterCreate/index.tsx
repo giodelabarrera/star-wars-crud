@@ -6,7 +6,7 @@ import './index.scss'
 
 const baseClass = 'sw-CharacterCreateScreen'
 
-const initialData = {
+const formData = {
   name: 'Anakin Skywalker',
   birthYear: '1990',
   gender: 'male',
@@ -27,10 +27,7 @@ export default function CharacterCreateScreen() {
   return (
     <div className={baseClass}>
       <Paper>
-        <CharacterForm
-          initialData={initialData}
-          onSubmit={handleCharacterForm}
-        />
+        <CharacterForm formData={formData} onSubmit={handleCharacterForm} />
       </Paper>
     </div>
   )
