@@ -27,7 +27,7 @@ export default function CharacterCreateScreen() {
   return (
     <div className={baseClass}>
       <Paper>
-        <CharacterForm formData={formData} onSubmit={handleCharacterForm} />
+        <CharacterForm initialData={formData} onSubmit={handleCharacterForm} />
       </Paper>
     </div>
   )

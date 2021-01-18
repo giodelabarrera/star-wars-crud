@@ -11,13 +11,13 @@ import './index.scss'
 const baseClass = 'sw-CharacterForm'
 
 type CharacterFormProps = {
-  formData: Character
+  initialData: Character
   onSubmit: (data: Record<string, unknown>) => void
   secondAction?: ReactElement
 }
 
 export default function CharacterForm({
-  formData,
+  initialData,
   onSubmit,
   secondAction
 }: CharacterFormProps) {
@@ -30,7 +30,7 @@ export default function CharacterForm({
     hairColor,
     skinColor,
     eyeColor
-  } = formData
+  } = initialData
 
   const handleSubmit = e => {
     e.preventDefault()

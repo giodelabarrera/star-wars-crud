@@ -21,7 +21,7 @@ export default function CharacterEditScreen() {
       <Paper>
         {isSuccess && (
           <CharacterForm
-            formData={character}
+            initialData={character}
             onSubmit={handleCharacterForm}
             secondAction={
               <Button
