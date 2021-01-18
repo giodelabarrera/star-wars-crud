@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react'
+import React, {ReactElement, useState} from 'react'
 import {FaSave} from 'react-icons/fa'
 
 import {Character} from '../../../types'
@@ -16,33 +16,65 @@ type CharacterFormProps = {
   secondAction?: ReactElement
 }
 
-export default function CharacterForm({
+function CharacterForm({
   initialData,
   onSubmit,
   secondAction
 }: CharacterFormProps) {
   const {
-    name,
-    birthYear,
-    gender,
-    height,
-    mass,
-    hairColor,
-    skinColor,
-    eyeColor
+    name: initialName,
+    birthYear: initialBirthYear,
+    gender: initialGender,
+    height: initialHeight,
+    mass: initialMass,
+    hairColor: initialHairColor,
+    skinColor: initialSkinColor,
+    eyeColor: initialEyeColor
   } = initialData
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const name = e.target.elements.name.value
-    const birthYear = e.target.elements.birthYear.value
-    const gender = e.target.elements.gender.value
-    const height = e.target.elements.height.value
-    const mass = e.target.elements.mass.value
-    const hairColor = e.target.elements.hairColor.value
-    const skinColor = e.target.elements.skinColor.value
-    const eyeColor = e.target.elements.eyeColor.value
+  const [name, setName] = useState(initialName)
+  const [birthYear, setBirthYear] = useState(initialBirthYear)
+  const [gender, setGender] = useState(initialGender)
+  const [height, setHeight] = useState(initialHeight)
+  const [mass, setMass] = useState(initialMass)
+  const [hairColor, setHairColor] = useState(initialHairColor)
+  const [skinColor, setSkinColor] = useState(initialSkinColor)
+  const [eyeColor, setEyeColor] = useState(initialEyeColor)
 
+  const handleNameChange = e => {
+    setName(e.target.value)
+  }
+
+  const handleBirthYearChange = e => {
+    setBirthYear(e.target.value)
+  }
+
+  const handleGenderChange = e => {
+    setGender(e.target.value)
+  }
+
+  const handleHeightChange = e => {
+    setHeight(e.target.value)
+  }
+
+  const handleMassChange = e => {
+    setMass(e.target.value)
+  }
+
+  const handleHairColorChange = e => {
+    setHairColor(e.target.value)
+  }
+
+  const handleSkinColorChange = e => {
+    setSkinColor(e.target.value)
+  }
+
+  const handleEyeColorChange = e => {
+    setEyeColor(e.target.value)
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const data = {
       name,
       birthYear,
@@ -61,39 +93,79 @@ export default function CharacterForm({
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Identity</h3>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="name">Name</Label>
-          <Input type="text" id="name" defaultValue={name} />
+          <Label htmlFor="name">Name *</Label>
+          <Input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleNameChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="birthYear">Birth year</Label>
-          <Input type="text" id="birthYear" defaultValue={birthYear} />
+          <Label htmlFor="birthYear">Birth year *</Label>
+          <Input
+            type="text"
+            id="birthYear"
+            value={birthYear}
+            onChange={handleBirthYearChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="gender">Gender</Label>
-          <Input type="text" id="gender" defaultValue={gender} />
+          <Label htmlFor="gender">Gender *</Label>
+          <Input
+            type="text"
+            id="gender"
+            value={gender}
+            onChange={handleGenderChange}
+          />
         </div>
       </div>
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Characteristics</h3>
         <div className={`${baseClass}-textField`}>
           <Label htmlFor="height">Height</Label>
-          <Input type="number" id="height" defaultValue={height} />
+          <Input
+            type="number"
+            id="height"
+            value={height}
+            onChange={handleHeightChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
           <Label htmlFor="mass">Mass</Label>
-          <Input type="number" id="mass" defaultValue={mass} />
+          <Input
+            type="number"
+            id="mass"
+            value={mass}
+            onChange={handleMassChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
           <Label htmlFor="hairColor">Hair color</Label>
-          <Input type="text" id="hairColor" defaultValue={hairColor} />
+          <Input
+            type="text"
+            id="hairColor"
+            value={hairColor}
+            onChange={handleHairColorChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
           <Label htmlFor="skinColor">Skin color</Label>
-          <Input type="text" id="skinColor" defaultValue={skinColor} />
+          <Input
+            type="text"
+            id="skinColor"
+            value={skinColor}
+            onChange={handleSkinColorChange}
+          />
         </div>
         <div className={`${baseClass}-textField`}>
           <Label htmlFor="eyeColor">Eye color</Label>
-          <Input type="text" id="eyeColor" defaultValue={eyeColor} />
+          <Input
+            type="text"
+            id="eyeColor"
+            value={eyeColor}
+            onChange={handleEyeColorChange}
+          />
         </div>
       </div>
       <div className={`${baseClass}-actionRow`}>
@@ -105,3 +177,5 @@ export default function CharacterForm({
     </form>
   )
 }
+
+export default CharacterForm
