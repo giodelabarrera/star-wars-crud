@@ -29,7 +29,7 @@ export default function CharacterDataTable({
         <TableHead>
           <TableRow>
             <TableCell variant="head">Name</TableCell>
-            <TableCell variant="head">BirTableCell year</TableCell>
+            <TableCell variant="head">Birth year</TableCell>
             <TableCell variant="head">Gender</TableCell>
             <TableCell variant="head">Height</TableCell>
             <TableCell variant="head">Mass</TableCell>
