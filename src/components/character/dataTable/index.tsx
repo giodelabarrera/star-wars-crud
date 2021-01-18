@@ -53,15 +53,13 @@ export default function CharacterDataTable({
               <TableCell>{character.skinColor}</TableCell>
               <TableCell>{character.eyeColor}</TableCell>
               <TableCell>
-                <div>
-                  <Button
-                    startIcon={<FaPen />}
-                    color="primary"
-                    onClick={onEditClick}
-                  >
-                    Edit
-                  </Button>
-                </div>
+                <Button
+                  startIcon={<FaPen />}
+                  color="primary"
+                  onClick={onEditClick}
+                >
+                  Edit
+                </Button>
               </TableCell>
             </TableRow>
           ))}
