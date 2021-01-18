@@ -17,8 +17,8 @@ const baseClass = 'sw-CharacterDataTable'
 
 type CharacterDataTableProps = {
   characters: Character[]
-  onEditClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  editLink: (props) => JSX.Element
+  onEditClick: (id: number) => void
+  editLink: (id: number) => (props) => JSX.Element
   nameSortDirection: TableCellDirection
   birthYearSortDirection: TableCellDirection
   genderSortDirection: TableCellDirection
@@ -37,10 +37,10 @@ type CharacterDataTableProps = {
   onEyeColorSort: TableCellOnSort
 }
 
-export default function CharacterDataTable({
+function CharacterDataTable({
   characters,
   onEditClick,
-  editLink: EditLink,
+  editLink: editLinkFactory,
   nameSortDirection,
   birthYearSortDirection,
   genderSortDirection,
@@ -131,31 +131,36 @@ export default function CharacterDataTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {characters.map(character => (
-            <TableRow key={character.id}>
-              <TableCell>
-                <EditLink>{character.name}</EditLink>
-              </TableCell>
-              <TableCell>{character.birthYear}</TableCell>
-              <TableCell>{character.gender}</TableCell>
-              <TableCell>{character.height}</TableCell>
-              <TableCell>{character.mass}</TableCell>
-              <TableCell>{character.hairColor}</TableCell>
-              <TableCell>{character.skinColor}</TableCell>
-              <TableCell>{character.eyeColor}</TableCell>
-              <TableCell>
-                <Button
-                  startIcon={<FaPen />}
-                  color="primary"
-                  onClick={onEditClick}
-                >
-                  Edit
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {characters.map(character => {
+            const EditLink = editLinkFactory(character.id)
+            return (
+              <TableRow key={character.id}>
+                <TableCell>
+                  <EditLink>{character.name}</EditLink>
+                </TableCell>
+                <TableCell>{character.birthYear}</TableCell>
+                <TableCell>{character.gender}</TableCell>
+                <TableCell>{character.height}</TableCell>
+                <TableCell>{character.mass}</TableCell>
+                <TableCell>{character.hairColor}</TableCell>
+                <TableCell>{character.skinColor}</TableCell>
+                <TableCell>{character.eyeColor}</TableCell>
+                <TableCell>
+                  <Button
+                    startIcon={<FaPen />}
+                    color="primary"
+                    onClick={() => onEditClick(character.id)}
+                  >
+                    Edit
+                  </Button>
+                </TableCell>
+              </TableRow>
+            )
+          })}
         </TableBody>
       </Table>
     </div>
   )
 }
+
+export default CharacterDataTable

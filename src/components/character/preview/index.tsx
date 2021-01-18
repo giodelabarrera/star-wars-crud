@@ -9,7 +9,7 @@ const baseClass = 'sw-CharacterPreview'
 
 type CharacterPreviewProps = {
   character: Character
-  onEditClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  onEditClick: (id: number) => void
 }
 
 export default function CharacterPreview({
@@ -27,12 +27,13 @@ export default function CharacterPreview({
     skinColor,
     eyeColor
   } = character
+
   return (
     <section className={baseClass} data-id={id}>
       <div className={`${baseClass}-header`}>
         <h2 className={`${baseClass}-name`}>{name}</h2>
         <div>
-          <Button color="primary" onClick={onEditClick}>
+          <Button color="primary" onClick={() => onEditClick(id)}>
             <FaPen />
           </Button>
         </div>
