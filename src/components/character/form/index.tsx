@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
+import {FaSave} from 'react-icons/fa'
 
 import {Character} from '../../../types'
+import Button from '../../ui/button'
 import Input from '../../ui/input'
 import Label from '../../ui/label'
 
@@ -11,11 +13,13 @@ const baseClass = 'sw-CharacterForm'
 type CharacterFormProps = {
   character?: Character
   onSubmit: (data: Record<string, unknown>) => void
+  secondAction?: ReactElement
 }
 
 export default function CharacterForm({
   character = null,
-  onSubmit
+  onSubmit,
+  secondAction
 }: CharacterFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -62,6 +66,12 @@ export default function CharacterForm({
           <Label htmlFor="eye-color">Eye color</Label>
           <Input type="text" id="eye-color" />
         </div>
+      </div>
+      <div className={`${baseClass}-actionRow`}>
+        <Button startIcon={<FaSave />} variant="contained" color="primary">
+          Save
+        </Button>
+        {secondAction && secondAction}
       </div>
     </form>
   )
