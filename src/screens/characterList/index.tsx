@@ -109,12 +109,17 @@ function CharacterListScreen() {
     setEyeColorSortDirection(direction)
   }
 
+  const handleCreateClick = () => {
+    navigate(`/create`)
+  }
+
   const handleEditClick = id => {
     navigate(`/${id}`)
   }
 
   const createCharacterButtonProps = {
     color: 'primary',
+    onClick: handleCreateClick,
     ...(isMobile
       ? {variant: 'text', children: <FaPlus />}
       : {variant: 'contained', startIcon: <FaPlus />, children: 'Create'})
