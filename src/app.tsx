@@ -6,6 +6,7 @@ import CharacterListScreen from './screens/characterList'
 import CharacterCreateScreen from './screens/characterCreate'
 import CharacterPreviewScreen from './screens/characterPreview'
 import CharacterEditScreen from './screens/characterEdit'
+import NotFoundScreen from './screens/notFound'
 import './app.scss'
 
 function App() {
@@ -23,9 +24,13 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<CharacterListScreen />} />
-      <Route path="/create" element={<CharacterCreateScreen />} />
-      <Route path="/:id/preview" element={<CharacterPreviewScreen />} />
-      <Route path="/:id" element={<CharacterEditScreen />} />
+      <Route path="/character/create" element={<CharacterCreateScreen />} />
+      <Route
+        path="/character/:id/preview"
+        element={<CharacterPreviewScreen />}
+      />
+      <Route path="/character/:id" element={<CharacterEditScreen />} />
+      <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )
 }
