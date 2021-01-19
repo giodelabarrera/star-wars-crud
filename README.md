@@ -23,15 +23,13 @@ Features:
 npm i
 ```
 
-### Development server
-
-Run mocked api server
+### Run mocked api server
 
 ```sh
 npm run api-start
 ```
 
-Run web server
+### Run web server
 
 ```sh
 npm run start
@@ -50,6 +48,7 @@ npm run lint
 ```sh
 npm run format
 ```
+
 ### Run tests
 
 ```sh
