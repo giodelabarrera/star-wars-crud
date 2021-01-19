@@ -110,15 +110,15 @@ function CharacterListScreen() {
   }
 
   const handleCreateClick = () => {
-    navigate(`/create`)
+    navigate(`/character/create`)
   }
 
   const handlePreviewClick = id => {
-    navigate(`/${id}/preview`)
+    navigate(`/character/${id}/preview`)
   }
 
   const handleEditClick = id => {
-    navigate(`/${id}`)
+    navigate(`/character/${id}`)
   }
 
   const createCharacterButtonProps = {
@@ -164,7 +164,9 @@ function CharacterListScreen() {
               characters={characters}
               onPreviewClick={handlePreviewClick}
               onEditClick={handleEditClick}
-              editLink={id => props => <Link {...props} to={`/${id}`} />}
+              editLink={id => props => (
+                <Link {...props} to={`/character/${id}`} />
+              )}
               nameSortDirection={nameSortDirection}
               birthYearSortDirection={birthYearSortDirection}
               genderSortDirection={genderSortDirection}

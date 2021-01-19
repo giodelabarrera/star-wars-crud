@@ -1,0 +1,20 @@
+.sw-NotFoundScreen {
+  text-align: center;
+
+  &-imageContainer {
+    svg {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &-title {
+    font-size: 80px;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &-description {
+    font-size: 24px;
+  }
+}
