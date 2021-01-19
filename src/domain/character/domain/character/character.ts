@@ -15,7 +15,7 @@ type CharacterProps = {
 }
 
 export default class Character {
-  readonly id: number | undefined
+  readonly id: number
   readonly name: string
   readonly height: CharacterHeight
   readonly mass: CharacterMass
