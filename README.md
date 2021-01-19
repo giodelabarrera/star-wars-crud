@@ -15,6 +15,12 @@ Features:
 - Responsive
 - Clean folder structure
 
+<br/>
+<p align="center">
+    <img width="786" alt="Star Wars" src="https://user-images.githubusercontent.com/1263588/105107146-b826d600-5ab7-11eb-9cb0-46edf8d91317.gif">
+</p>
+
+
 ## Getting Started
 
 ### Installation
@@ -34,10 +40,6 @@ npm run api-start
 ```sh
 npm run start
 ```
-
-<p align="center">
-    <img width="786" alt="Star Wars" src="https://user-images.githubusercontent.com/1263588/105106216-ec00fc00-5ab5-11eb-8b9d-e49a9aa18bd4.png">
-</p>
 
 ---
 
