@@ -113,6 +113,10 @@ function CharacterListScreen() {
     navigate(`/create`)
   }
 
+  const handlePreviewClick = id => {
+    navigate(`/${id}/preview`)
+  }
+
   const handleEditClick = id => {
     navigate(`/${id}`)
   }
@@ -157,6 +161,7 @@ function CharacterListScreen() {
         <Paper>
           <CharacterDataTable
             characters={characters}
+            onPreviewClick={handlePreviewClick}
             onEditClick={handleEditClick}
             editLink={id => props => <Link {...props} to={`/${id}`} />}
             nameSortDirection={nameSortDirection}

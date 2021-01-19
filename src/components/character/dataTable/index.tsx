@@ -1,4 +1,4 @@
-import {FaPen} from 'react-icons/fa'
+import {FaEye, FaPen} from 'react-icons/fa'
 
 import {Character} from '../../../types'
 import Button from '../../ui/button'
@@ -17,6 +17,7 @@ const baseClass = 'sw-CharacterDataTable'
 
 type CharacterDataTableProps = {
   characters: Character[]
+  onPreviewClick: (id: number) => void
   onEditClick: (id: number) => void
   editLink: (id: number) => (props) => JSX.Element
   nameSortDirection: TableCellDirection
@@ -39,6 +40,7 @@ type CharacterDataTableProps = {
 
 function CharacterDataTable({
   characters,
+  onPreviewClick,
   onEditClick,
   editLink: editLinkFactory,
   nameSortDirection,
@@ -146,6 +148,14 @@ function CharacterDataTable({
                 <TableCell>{character.skinColor}</TableCell>
                 <TableCell>{character.eyeColor}</TableCell>
                 <TableCell>
+                  <Button
+                    startIcon={<FaEye />}
+                    color="primary"
+                    onClick={() => onPreviewClick(character.id)}
+                    className={`${baseClass}-showButton`}
+                  >
+                    Show
+                  </Button>
                   <Button
                     startIcon={<FaPen />}
                     color="primary"
