@@ -27,15 +27,15 @@ function CharacterForm({
     errors,
     isValid,
     handleNameChange,
-    handleNameFocus,
+    handleNameBlur,
     handleBirthYearChange,
-    handleBirthYearFocus,
+    handleBirthYearBlur,
     handleGenderChange,
-    handleGenderFocus,
+    handleGenderBlur,
     handleHeightChange,
-    handleHeightFocus,
+    handleHeightBlur,
     handleMassChange,
-    handleMassFocus,
+    handleMassBlur,
     handleHairColorChange,
     handleSkinColorChange,
     handleEyeColorChange,
@@ -59,21 +59,33 @@ function CharacterForm({
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Identity</h3>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="name">Name *</Label>
+          <Label
+            htmlFor="name"
+            className={cx(`${baseClass}-label`, {
+              [`${baseClass}-hasError`]: errors?.name
+            })}
+          >
+            Name *
+          </Label>
           <Input
             type="text"
             id="name"
             value={name}
             autoFocus
             onChange={handleNameChange}
-            onFocus={handleNameFocus}
+            onBlur={handleNameBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.name
             })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="birthYear">
+          <Label
+            htmlFor="birthYear"
+            className={cx(`${baseClass}-label`, {
+              [`${baseClass}-hasError`]: errors?.birthYear
+            })}
+          >
             Birth year *{' '}
             <small className={`${baseClass}-labelHelp`}>(ex: 41.9BBY)</small>
           </Label>
@@ -82,20 +94,27 @@ function CharacterForm({
             id="birthYear"
             value={birthYear}
             onChange={handleBirthYearChange}
-            onFocus={handleBirthYearFocus}
+            onBlur={handleBirthYearBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.birthYear
             })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="gender">Gender *</Label>
+          <Label
+            htmlFor="gender"
+            className={cx(`${baseClass}-label`, {
+              [`${baseClass}-hasError`]: errors?.gender
+            })}
+          >
+            Gender *
+          </Label>
           <Input
             type="text"
             id="gender"
             value={gender}
             onChange={handleGenderChange}
-            onFocus={handleGenderFocus}
+            onBlur={handleGenderBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.gender
             })}
@@ -105,7 +124,12 @@ function CharacterForm({
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Characteristics</h3>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="height">
+          <Label
+            htmlFor="height"
+            className={cx(`${baseClass}-label`, {
+              [`${baseClass}-hasError`]: errors?.height
+            })}
+          >
             Height <small className={`${baseClass}-labelHelp`}>(ex: 180)</small>
           </Label>
           <Input
@@ -113,14 +137,19 @@ function CharacterForm({
             id="height"
             value={height}
             onChange={handleHeightChange}
-            onFocus={handleHeightFocus}
+            onBlur={handleHeightBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.height
             })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="mass">
+          <Label
+            htmlFor="mass"
+            className={cx(`${baseClass}-label`, {
+              [`${baseClass}-hasError`]: errors?.mass
+            })}
+          >
             Mass <small className={`${baseClass}-labelHelp`}>(ex: 80)</small>
           </Label>
           <Input
@@ -128,7 +157,7 @@ function CharacterForm({
             id="mass"
             value={mass}
             onChange={handleMassChange}
-            onFocus={handleMassFocus}
+            onBlur={handleMassBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.mass
             })}

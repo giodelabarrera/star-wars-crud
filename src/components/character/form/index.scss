@@ -24,6 +24,12 @@ $baseClass: '.sw-CharacterForm';
     color: var(--c-gray-3);
   }
 
+  &-label {
+    &#{$baseClass}-hasError {
+      color: var(--c-error);
+    }
+  }
+
   &-input {
     &#{$baseClass}-hasError {
       border-color: var(--c-error);
