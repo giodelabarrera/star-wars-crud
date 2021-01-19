@@ -90,8 +90,8 @@ function useCharacterForm(initialData: Character) {
     if (getIsValid(formData)) {
       const parsedFormData = {
         ...formData,
-        ...(height && {height: mapStringToNumber(height)}),
-        ...(mass && {mass: mapStringToNumber(mass)})
+        height: mapStringToNumber(height),
+        mass: mapStringToNumber(mass)
       }
       onSubmit(parsedFormData)
     }
