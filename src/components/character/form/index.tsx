@@ -23,7 +23,8 @@ function CharacterForm({
 }: CharacterFormProps) {
   const {
     formData,
-
+    //errors,
+    isValid,
     handleNameChange,
     handleBirthYearChange,
     handleGenderChange,
@@ -126,7 +127,12 @@ function CharacterForm({
         </div>
       </div>
       <div className={`${baseClass}-actionRow`}>
-        <Button startIcon={<FaSave />} variant="contained" color="primary">
+        <Button
+          startIcon={<FaSave />}
+          variant="contained"
+          color="primary"
+          disabled={!isValid}
+        >
           Save
         </Button>
         {secondAction && secondAction}
