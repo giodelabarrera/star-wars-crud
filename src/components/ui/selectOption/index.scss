@@ -1,0 +1,6 @@
+[data-reach-listbox-option] {
+  &[aria-selected='true'] {
+    color: var(--c-white);
+    background-color: var(--c-primary);
+  }
+}
