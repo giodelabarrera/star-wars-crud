@@ -6,7 +6,10 @@ import {Character} from '../../../types'
 import Button from '../../ui/button'
 import Input from '../../ui/input'
 import Label from '../../ui/label'
+import Select from '../../ui/select'
+import SelectOption from '../../ui/selectOption'
 import useCharacterForm from './useCharacterForm'
+import {GENDER_TYPES} from './types'
 import './index.scss'
 
 const baseClass = 'sw-CharacterForm'
@@ -51,8 +54,6 @@ function CharacterForm({
     skinColor,
     eyeColor
   } = formData
-
-  console.log(errors)
 
   return (
     <form className={baseClass} onSubmit={handleSubmit(onSubmit)}>
@@ -109,16 +110,20 @@ function CharacterForm({
           >
             Gender *
           </Label>
-          <Input
-            type="text"
+          <Select
             id="gender"
-            value={gender}
             onChange={handleGenderChange}
             onBlur={handleGenderBlur}
-            className={cx(`${baseClass}-input`, {
+            className={cx(`${baseClass}-select`, {
               [`${baseClass}-hasError`]: errors?.gender
             })}
-          />
+            value={gender}
+          >
+            <SelectOption value="default">Choose a gender</SelectOption>
+            <SelectOption value={GENDER_TYPES.male}>male</SelectOption>
+            <SelectOption value={GENDER_TYPES.female}>female</SelectOption>
+            <SelectOption value={GENDER_TYPES['n/a']}>n/a</SelectOption>
+          </Select>
         </div>
       </div>
       <div className={`${baseClass}-fieldGroup`}>

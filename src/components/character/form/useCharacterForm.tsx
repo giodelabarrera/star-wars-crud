@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
 import {Character} from '../../../types'
+import {GENDER_TYPES} from './types'
 
 function useCharacterForm(initialData: Character) {
   const {
@@ -16,7 +17,9 @@ function useCharacterForm(initialData: Character) {
 
   const [name, setName] = useState(initialName)
   const [birthYear, setBirthYear] = useState(initialBirthYear)
-  const [gender, setGender] = useState(initialGender)
+  const [gender, setGender] = useState(() =>
+    mapGenderValueToGenderFormValue(initialGender)
+  )
   const [height, setHeight] = useState(() => mapNumberToString(initialHeight))
   const [mass, setMass] = useState(() => mapNumberToString(initialMass))
   const [hairColor, setHairColor] = useState(initialHairColor)
@@ -51,14 +54,15 @@ function useCharacterForm(initialData: Character) {
     else setErrorBirthYear(null)
   }
 
-  const handleGenderChange = e => {
-    setGender(e.target.value)
-    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+  const handleGenderChange = value => {
+    setGender(value)
+    if (!isRequiredValid(value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
 
-  const handleGenderBlur = e => {
-    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+  const handleGenderBlur = value => {
+    if (!isRequiredValid(value)) setErrorGender({type: 'required'})
+    else if (!isGenderPatternValid(value)) setErrorGender({type: 'pattern'})
     else setErrorGender(null)
   }
 
@@ -117,6 +121,7 @@ function useCharacterForm(initialData: Character) {
     if (getIsValid(formData)) {
       const parsedFormData = {
         ...formData,
+        gender: mapGenderFormValueToGenderValue(gender),
         height: mapStringToNumber(height),
         mass: mapStringToNumber(mass)
       }
@@ -177,12 +182,26 @@ function mapStringToNumber(stringValue) {
   return Number(stringValue)
 }
 
+function mapGenderValueToGenderFormValue(genderValue) {
+  if (genderValue === null) return 'default'
+  return genderValue
+}
+
+function mapGenderFormValueToGenderValue(genderFormValue) {
+  if (genderFormValue === 'default') return null
+  return genderFormValue
+}
+
 function isRequiredValid(value) {
   return !!value
 }
 
 function isNumberPatternValid(value) {
   return Number(value)
+}
+
+function isGenderPatternValid(value) {
+  return Object.keys(GENDER_TYPES).includes(value)
 }
 
 function getIsValid(formData) {
@@ -193,6 +212,8 @@ function getIsValid(formData) {
 
   const numberPatternValues = [height, mass].filter(Boolean)
   if (!numberPatternValues.every(isNumberPatternValid)) return false
+
+  if (!isGenderPatternValid(gender)) return false
 
   return true
 }

@@ -35,4 +35,12 @@ $baseClass: '.sw-CharacterForm';
       border-color: var(--c-error);
     }
   }
+
+  &-select {
+    &#{$baseClass}-hasError {
+      [data-reach-listbox-button] {
+        border-color: var(--c-error);
+      }
+    }
+  }
 }

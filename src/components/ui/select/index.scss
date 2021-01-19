@@ -1,0 +1,12 @@
+.sw-uiSelect {
+  [data-reach-listbox-button] {
+    border: 1px solid var(--c-gray-2);
+    padding: 8px 16px;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  &-arrow {
+    font-size: 16px;
+  }
+}
