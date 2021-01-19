@@ -18,12 +18,14 @@ type CharacterFormProps = {
   initialData: Character
   onSubmit: (data: Record<string, unknown>) => void
   secondAction?: ReactElement
+  withAutofocusFirst?: boolean
 }
 
 function CharacterForm({
   initialData,
   onSubmit,
-  secondAction
+  secondAction,
+  withAutofocusFirst = false
 }: CharacterFormProps) {
   const {
     formData,
@@ -72,7 +74,7 @@ function CharacterForm({
             type="text"
             id="name"
             value={name}
-            autoFocus
+            autoFocus={withAutofocusFirst}
             onChange={handleNameChange}
             onBlur={handleNameBlur}
             className={cx(`${baseClass}-input`, {

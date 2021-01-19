@@ -1,4 +1,4 @@
-import {FaPen} from 'react-icons/fa'
+import {FaEye, FaPen} from 'react-icons/fa'
 
 import {Character} from '../../../types'
 import Button from '../../ui/button'
@@ -10,6 +10,7 @@ import TableCell, {
   TableCellDirection,
   TableCellOnSort
 } from '../../ui/tableCell'
+import useMediaQuery from '../../../hooks/useMediaQuery'
 
 import './index.scss'
 
@@ -17,6 +18,7 @@ const baseClass = 'sw-CharacterDataTable'
 
 type CharacterDataTableProps = {
   characters: Character[]
+  onPreviewClick: (id: number) => void
   onEditClick: (id: number) => void
   editLink: (id: number) => (props) => JSX.Element
   nameSortDirection: TableCellDirection
@@ -39,6 +41,7 @@ type CharacterDataTableProps = {
 
 function CharacterDataTable({
   characters,
+  onPreviewClick,
   onEditClick,
   editLink: editLinkFactory,
   nameSortDirection,
@@ -58,6 +61,7 @@ function CharacterDataTable({
   onSkinColorSort,
   onEyeColorSort
 }: CharacterDataTableProps) {
+  const isLargeDesktop = useMediaQuery('(min-width: 1200px)')
   return (
     <div className={baseClass}>
       <Table>
@@ -147,12 +151,30 @@ function CharacterDataTable({
                 <TableCell>{character.eyeColor}</TableCell>
                 <TableCell>
                   <Button
-                    startIcon={<FaPen />}
+                    color="primary"
+                    onClick={() => onPreviewClick(character.id)}
+                    className={`${baseClass}-showButton`}
+                    {...(isLargeDesktop
+                      ? {
+                          startIcon: <FaEye />,
+                          children: 'Show'
+                        }
+                      : {
+                          children: <FaEye />
+                        })}
+                  />
+                  <Button
                     color="primary"
                     onClick={() => onEditClick(character.id)}
-                  >
-                    Edit
-                  </Button>
+                    {...(isLargeDesktop
+                      ? {
+                          startIcon: <FaPen />,
+                          children: 'Edit'
+                        }
+                      : {
+                          children: <FaPen />
+                        })}
+                  />
                 </TableCell>
               </TableRow>
             )

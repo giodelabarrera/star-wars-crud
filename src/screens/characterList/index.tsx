@@ -67,8 +67,8 @@ function CharacterListScreen() {
     eyeColorSortDirection
   })
 
-  const isWide = useMediaQuery('(min-width: 576px)')
-  const isMobile = !isWide
+  const isWide = useMediaQuery('(min-width: 768px)')
+  const isMobileOrTablet = !isWide
 
   const {isLoading, characters} = useSearchCharacters(query, sortFields)
 
@@ -113,6 +113,10 @@ function CharacterListScreen() {
     navigate(`/create`)
   }
 
+  const handlePreviewClick = id => {
+    navigate(`/${id}/preview`)
+  }
+
   const handleEditClick = id => {
     navigate(`/${id}`)
   }
@@ -120,7 +124,7 @@ function CharacterListScreen() {
   const createCharacterButtonProps = {
     color: 'primary',
     onClick: handleCreateClick,
-    ...(isMobile
+    ...(isMobileOrTablet
       ? {variant: 'text', children: <FaPlus />}
       : {variant: 'contained', startIcon: <FaPlus />, children: 'Create'})
   } as ButtonProps
@@ -136,7 +140,7 @@ function CharacterListScreen() {
           <Button {...createCharacterButtonProps} />
         </div>
       </div>
-      {isMobile ? (
+      {isMobileOrTablet ? (
         <>
           {characters.length ? (
             <CharacterList characters={characters}>
@@ -155,27 +159,32 @@ function CharacterListScreen() {
         </>
       ) : (
         <Paper>
-          <CharacterDataTable
-            characters={characters}
-            onEditClick={handleEditClick}
-            editLink={id => props => <Link {...props} to={`/${id}`} />}
-            nameSortDirection={nameSortDirection}
-            birthYearSortDirection={birthYearSortDirection}
-            genderSortDirection={genderSortDirection}
-            heightSortDirection={heightSortDirection}
-            massSortDirection={massSortDirection}
-            hairColorSortDirection={hairColorSortDirection}
-            skinColorSortDirection={skinColorSortDirection}
-            eyeColorSortDirection={eyeColorSortDirection}
-            onNameSort={handleNameSort}
-            onBirthYearSort={handleBirthYearSort}
-            onGenderSort={handleGenderSort}
-            onHeightSort={handleHeightSort}
-            onMassSort={handleMassSort}
-            onHairColorSort={handleHairColorSort}
-            onSkinColorSort={handleSkinColorSort}
-            onEyeColorSort={handleEyeColorSort}
-          />
+          {characters.length ? (
+            <CharacterDataTable
+              characters={characters}
+              onPreviewClick={handlePreviewClick}
+              onEditClick={handleEditClick}
+              editLink={id => props => <Link {...props} to={`/${id}`} />}
+              nameSortDirection={nameSortDirection}
+              birthYearSortDirection={birthYearSortDirection}
+              genderSortDirection={genderSortDirection}
+              heightSortDirection={heightSortDirection}
+              massSortDirection={massSortDirection}
+              hairColorSortDirection={hairColorSortDirection}
+              skinColorSortDirection={skinColorSortDirection}
+              eyeColorSortDirection={eyeColorSortDirection}
+              onNameSort={handleNameSort}
+              onBirthYearSort={handleBirthYearSort}
+              onGenderSort={handleGenderSort}
+              onHeightSort={handleHeightSort}
+              onMassSort={handleMassSort}
+              onHairColorSort={handleHairColorSort}
+              onSkinColorSort={handleSkinColorSort}
+              onEyeColorSort={handleEyeColorSort}
+            />
+          ) : (
+            <NoResults query={query} />
+          )}
         </Paper>
       )}
     </div>

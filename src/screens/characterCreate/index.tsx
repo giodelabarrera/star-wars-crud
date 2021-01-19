@@ -37,6 +37,7 @@ export default function CharacterCreateScreen() {
       <Paper>
         <CharacterForm
           initialData={initialFormData}
+          withAutofocusFirst
           onSubmit={handleCharacterFormSubmit}
         />
       </Paper>
