@@ -23,7 +23,7 @@ export default function CharacterCreateScreen() {
   const navigate = useNavigate()
   const {mutate} = useCreateCharacter()
 
-  const handleCharacterForm = data => {
+  const handleCharacterFormSubmit = data => {
     mutate(data, {
       onSuccess: data => {
         const {id} = data
@@ -37,7 +37,7 @@ export default function CharacterCreateScreen() {
       <Paper>
         <CharacterForm
           initialData={initialFormData}
-          onSubmit={handleCharacterForm}
+          onSubmit={handleCharacterFormSubmit}
         />
       </Paper>
     </div>
