@@ -67,8 +67,8 @@ function CharacterListScreen() {
     eyeColorSortDirection
   })
 
-  const isWide = useMediaQuery('(min-width: 576px)')
-  const isMobile = !isWide
+  const isWide = useMediaQuery('(min-width: 768px)')
+  const isMobileOrTablet = !isWide
 
   const {isLoading, characters} = useSearchCharacters(query, sortFields)
 
@@ -124,7 +124,7 @@ function CharacterListScreen() {
   const createCharacterButtonProps = {
     color: 'primary',
     onClick: handleCreateClick,
-    ...(isMobile
+    ...(isMobileOrTablet
       ? {variant: 'text', children: <FaPlus />}
       : {variant: 'contained', startIcon: <FaPlus />, children: 'Create'})
   } as ButtonProps
@@ -140,7 +140,7 @@ function CharacterListScreen() {
           <Button {...createCharacterButtonProps} />
         </div>
       </div>
-      {isMobile ? (
+      {isMobileOrTablet ? (
         <>
           {characters.length ? (
             <CharacterList characters={characters}>
