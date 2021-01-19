@@ -35,6 +35,12 @@ npm run api-start
 npm run start
 ```
 
+<p align="center">
+    <img width="786" alt="Star Wars" src="https://user-images.githubusercontent.com/1263588/105106216-ec00fc00-5ab5-11eb-8b9d-e49a9aa18bd4.png">
+</p>
+
+---
+
 ## Development
 
 ### Run lint
