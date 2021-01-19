@@ -34,7 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watch",
+    "test": "jest",
     "test-debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "api-start": "json-server --watch db.json --port 3306",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
