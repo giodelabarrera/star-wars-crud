@@ -6,7 +6,7 @@ export default class CharacterMass extends NumberValueObject {
     super({value})
     if (!this.ensureIsValid(value)) {
       throw new InvalidArgumentException(
-        `The value ${value} is not a integer value`
+        `The value ${value} is not a valid value`
       )
     }
   }
