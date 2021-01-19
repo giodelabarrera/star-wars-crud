@@ -256,6 +256,17 @@
       "skin_color": "",
       "eye_color": "",
       "id": 11
+    },
+    {
+      "name": "Giorgio",
+      "birth_year": "92892",
+      "gender": "male",
+      "height": null,
+      "mass": null,
+      "hair_color": "",
+      "skin_color": "",
+      "eye_color": "",
+      "id": 12
     }
   ]
 }

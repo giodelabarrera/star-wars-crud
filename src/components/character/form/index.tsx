@@ -9,8 +9,8 @@ import Label from '../../ui/label'
 import Select from '../../ui/select'
 import SelectOption from '../../ui/selectOption'
 import useCharacterForm from './useCharacterForm'
-import './index.scss'
 import {GENDER_TYPES} from './types'
+import './index.scss'
 
 const baseClass = 'sw-CharacterForm'
 
