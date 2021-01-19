@@ -4,7 +4,7 @@ import NumberValueObject from '../../../shared/domain/valueObject/numberValueObj
 export default class CharacterHeight extends NumberValueObject {
   constructor({value}: {value: number}) {
     super({value})
-    if (!this.ensureIsValid(value)) {
+    if (value && !this.ensureIsValid(value)) {
       throw new InvalidArgumentException(
         `The value ${value} is not a valid value`
       )
