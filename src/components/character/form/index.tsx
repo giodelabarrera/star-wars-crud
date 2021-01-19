@@ -60,7 +60,10 @@ function CharacterForm({
           />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="birthYear">Birth year *</Label>
+          <Label htmlFor="birthYear">
+            Birth year *{' '}
+            <small className={`${baseClass}-labelHelp`}>(ex: 41.9BBY)</small>
+          </Label>
           <Input
             type="text"
             id="birthYear"
@@ -81,7 +84,9 @@ function CharacterForm({
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Characteristics</h3>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="height">Height</Label>
+          <Label htmlFor="height">
+            Height <small className={`${baseClass}-labelHelp`}>(ex: 180)</small>
+          </Label>
           <Input
             type="number"
             id="height"
@@ -90,7 +95,9 @@ function CharacterForm({
           />
         </div>
         <div className={`${baseClass}-textField`}>
-          <Label htmlFor="mass">Mass</Label>
+          <Label htmlFor="mass">
+            Mass <small className={`${baseClass}-labelHelp`}>(ex: 80)</small>
+          </Label>
           <Input
             type="number"
             id="mass"
