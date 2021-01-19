@@ -25,13 +25,13 @@ npm i
 
 ### Development server
 
-Run the mocked api server
+Run mocked api server
 
 ```sh
 npm run api-start
 ```
 
-Run the web server
+Run web server
 
 ```sh
 npm run start
