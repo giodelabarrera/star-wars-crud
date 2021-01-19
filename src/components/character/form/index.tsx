@@ -1,11 +1,11 @@
-import React, {ReactElement, useState} from 'react'
+import React, {ReactElement} from 'react'
 import {FaSave} from 'react-icons/fa'
 
 import {Character} from '../../../types'
 import Button from '../../ui/button'
 import Input from '../../ui/input'
 import Label from '../../ui/label'
-
+import useCharacterForm from './useCharacterForm'
 import './index.scss'
 
 const baseClass = 'sw-CharacterForm'
@@ -22,56 +22,29 @@ function CharacterForm({
   secondAction
 }: CharacterFormProps) {
   const {
-    name: initialName,
-    birthYear: initialBirthYear,
-    gender: initialGender,
-    height: initialHeight,
-    mass: initialMass,
-    hairColor: initialHairColor,
-    skinColor: initialSkinColor,
-    eyeColor: initialEyeColor
-  } = initialData
+    formData,
+    errors,
+    handleNameChange,
+    handleBirthYearChange,
+    handleGenderChange,
+    handleHeightChange,
+    handleMassChange,
+    handleHairColorChange,
+    handleSkinColorChange,
+    handleEyeColorChange
+  } = useCharacterForm(initialData)
+  const {
+    name,
+    birthYear,
+    gender,
+    height,
+    mass,
+    hairColor,
+    skinColor,
+    eyeColor
+  } = formData
 
-  const [name, setName] = useState(initialName)
-  const [birthYear, setBirthYear] = useState(initialBirthYear)
-  const [gender, setGender] = useState(initialGender)
-  const [height, setHeight] = useState(initialHeight)
-  const [mass, setMass] = useState(initialMass)
-  const [hairColor, setHairColor] = useState(initialHairColor)
-  const [skinColor, setSkinColor] = useState(initialSkinColor)
-  const [eyeColor, setEyeColor] = useState(initialEyeColor)
-
-  const handleNameChange = e => {
-    setName(e.target.value)
-  }
-
-  const handleBirthYearChange = e => {
-    setBirthYear(e.target.value)
-  }
-
-  const handleGenderChange = e => {
-    setGender(e.target.value)
-  }
-
-  const handleHeightChange = e => {
-    setHeight(e.target.value)
-  }
-
-  const handleMassChange = e => {
-    setMass(e.target.value)
-  }
-
-  const handleHairColorChange = e => {
-    setHairColor(e.target.value)
-  }
-
-  const handleSkinColorChange = e => {
-    setSkinColor(e.target.value)
-  }
-
-  const handleEyeColorChange = e => {
-    setEyeColor(e.target.value)
-  }
+  console.log(errors)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

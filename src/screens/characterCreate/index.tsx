@@ -6,15 +6,15 @@ import './index.scss'
 
 const baseClass = 'sw-CharacterCreateScreen'
 
-const formData = {
-  name: 'Anakin Skywalker',
-  birthYear: '1990',
-  gender: 'male',
-  height: 180,
-  mass: 90,
-  hairColor: 'brown',
-  skinColor: 'fair',
-  eyeColor: 'blue'
+const initialFormData = {
+  name: '',
+  birthYear: '',
+  gender: '',
+  height: null,
+  mass: null,
+  hairColor: '',
+  skinColor: '',
+  eyeColor: ''
 }
 
 export default function CharacterCreateScreen() {
@@ -27,7 +27,10 @@ export default function CharacterCreateScreen() {
   return (
     <div className={baseClass}>
       <Paper>
-        <CharacterForm initialData={formData} onSubmit={handleCharacterForm} />
+        <CharacterForm
+          initialData={initialFormData}
+          onSubmit={handleCharacterForm}
+        />
       </Paper>
     </div>
   )
