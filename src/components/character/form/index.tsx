@@ -7,6 +7,7 @@ import Button from '../../ui/button'
 import Input from '../../ui/input'
 import Label from '../../ui/label'
 import Select from '../../ui/select'
+import SelectOption from '../../ui/selectOption'
 import useCharacterForm from './useCharacterForm'
 import './index.scss'
 
@@ -116,9 +117,9 @@ function CharacterForm({
             })}
             value={gender}
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="n/a">N/A</option>
+            <SelectOption value="male">Male</SelectOption>
+            <SelectOption value="female">Female</SelectOption>
+            <SelectOption value="n/a">N/A</SelectOption>
           </Select>
         </div>
       </div>
