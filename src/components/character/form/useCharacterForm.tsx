@@ -35,14 +35,29 @@ function useCharacterForm(initialData: Character) {
     else setErrorName(null)
   }
 
+  const handleNameFocus = e => {
+    if (!isRequiredValid(e.target.value)) setErrorName({type: 'required'})
+    else setErrorName(null)
+  }
+
   const handleBirthYearChange = e => {
     setBirthYear(e.target.value)
     if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
     else setErrorBirthYear(null)
   }
 
+  const handleBirthYearFocus = e => {
+    if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
+    else setErrorBirthYear(null)
+  }
+
   const handleGenderChange = e => {
     setGender(e.target.value)
+    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+    else setErrorGender(null)
+  }
+
+  const handleGenderFocus = e => {
     if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
@@ -54,9 +69,21 @@ function useCharacterForm(initialData: Character) {
     else setErrorHeight(null)
   }
 
+  const handleHeightFocus = e => {
+    const value = e.target.value
+    if (value && !isNumberPatternValid(value)) setErrorHeight({type: 'pattern'})
+    else setErrorHeight(null)
+  }
+
   const handleMassChange = e => {
     const value = e.target.value
     setMass(value)
+    if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
+    else setErrorMass(null)
+  }
+
+  const handleMassFocus = e => {
+    const value = e.target.value
     if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
     else setErrorMass(null)
   }
@@ -124,10 +151,15 @@ function useCharacterForm(initialData: Character) {
     errors,
     isValid,
     handleNameChange,
+    handleNameFocus,
     handleBirthYearChange,
+    handleBirthYearFocus,
     handleGenderChange,
+    handleGenderFocus,
     handleHeightChange,
+    handleHeightFocus,
     handleMassChange,
+    handleMassFocus,
     handleHairColorChange,
     handleSkinColorChange,
     handleEyeColorChange,

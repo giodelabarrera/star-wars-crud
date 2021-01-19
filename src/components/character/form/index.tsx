@@ -1,4 +1,5 @@
 import React, {ReactElement} from 'react'
+import cx from 'classnames'
 import {FaSave} from 'react-icons/fa'
 
 import {Character} from '../../../types'
@@ -23,13 +24,18 @@ function CharacterForm({
 }: CharacterFormProps) {
   const {
     formData,
-    //errors,
+    errors,
     isValid,
     handleNameChange,
+    handleNameFocus,
     handleBirthYearChange,
+    handleBirthYearFocus,
     handleGenderChange,
+    handleGenderFocus,
     handleHeightChange,
+    handleHeightFocus,
     handleMassChange,
+    handleMassFocus,
     handleHairColorChange,
     handleSkinColorChange,
     handleEyeColorChange,
@@ -46,6 +52,8 @@ function CharacterForm({
     eyeColor
   } = formData
 
+  console.log(errors)
+
   return (
     <form className={baseClass} onSubmit={handleSubmit(onSubmit)}>
       <div className={`${baseClass}-fieldGroup`}>
@@ -56,7 +64,12 @@ function CharacterForm({
             type="text"
             id="name"
             value={name}
+            autoFocus
             onChange={handleNameChange}
+            onFocus={handleNameFocus}
+            className={cx(`${baseClass}-input`, {
+              [`${baseClass}-hasError`]: errors?.name
+            })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
@@ -69,6 +82,10 @@ function CharacterForm({
             id="birthYear"
             value={birthYear}
             onChange={handleBirthYearChange}
+            onFocus={handleBirthYearFocus}
+            className={cx(`${baseClass}-input`, {
+              [`${baseClass}-hasError`]: errors?.birthYear
+            })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
@@ -78,6 +95,10 @@ function CharacterForm({
             id="gender"
             value={gender}
             onChange={handleGenderChange}
+            onFocus={handleGenderFocus}
+            className={cx(`${baseClass}-input`, {
+              [`${baseClass}-hasError`]: errors?.gender
+            })}
           />
         </div>
       </div>
@@ -92,6 +113,10 @@ function CharacterForm({
             id="height"
             value={height}
             onChange={handleHeightChange}
+            onFocus={handleHeightFocus}
+            className={cx(`${baseClass}-input`, {
+              [`${baseClass}-hasError`]: errors?.height
+            })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
@@ -103,6 +128,10 @@ function CharacterForm({
             id="mass"
             value={mass}
             onChange={handleMassChange}
+            onFocus={handleMassFocus}
+            className={cx(`${baseClass}-input`, {
+              [`${baseClass}-hasError`]: errors?.mass
+            })}
           />
         </div>
         <div className={`${baseClass}-textField`}>
