@@ -33,7 +33,6 @@ function CharacterForm({
     handleBirthYearChange,
     handleBirthYearBlur,
     handleGenderChange,
-    handleGenderBlur,
     handleHeightChange,
     handleHeightBlur,
     handleMassChange,
@@ -117,6 +116,7 @@ function CharacterForm({
             })}
             value={gender}
           >
+            <SelectOption value="default">Choose a gender</SelectOption>
             <SelectOption value="male">Male</SelectOption>
             <SelectOption value="female">Female</SelectOption>
             <SelectOption value="n/a">N/A</SelectOption>
