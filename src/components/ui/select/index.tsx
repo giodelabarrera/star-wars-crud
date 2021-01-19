@@ -17,7 +17,7 @@ export default function Select({
   return (
     <div className={baseClass}>
       <Listbox
-        aria-labelledby={id}
+        name={id}
         value={value}
         onChange={onChange}
         arrow={<FaCaretDown className={`${baseClass}-arrow`} />}
