@@ -1,3 +1,5 @@
+import {useNavigate} from 'react-router-dom'
+
 import CharacterForm from '../../components/character/form'
 import {useCreateCharacter} from '../../components/character/hooks'
 import Paper from '../../components/ui/paper'
@@ -18,10 +20,16 @@ const initialFormData = {
 }
 
 export default function CharacterCreateScreen() {
+  const navigate = useNavigate()
   const {mutate} = useCreateCharacter()
 
   const handleCharacterForm = data => {
-    mutate(data)
+    mutate(data, {
+      onSuccess: data => {
+        const {id} = data
+        navigate(`/${id}`)
+      }
+    })
   }
 
   return (
