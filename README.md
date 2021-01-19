@@ -1,4 +1,4 @@
-<h1><img src="https://user-images.githubusercontent.com/1263588/105103895-9aef0900-5ab1-11eb-95fc-9cd668b82e01.png" width="32px" style="vertical-align: middle;"/> star-wars-crud </h1>
+# star-wars-crud
 
 > CRUD of Star Wars characters with a clean user interface written in Typescript.
 
