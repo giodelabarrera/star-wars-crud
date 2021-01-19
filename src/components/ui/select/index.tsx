@@ -20,9 +20,21 @@ export default function Select({
   onBlur,
   children
 }) {
+  const handleBlur = e => {
+    if (
+      e.currentTarget.attributes.getNamedItem('data-state').value === 'closed'
+    ) {
+      onBlur(e.currentTarget.attributes.getNamedItem('data-value').value)
+    }
+  }
   return (
     <div className={cx(baseClass, classNameProp)}>
-      <ListboxInput name={id} value={value} onChange={onChange} onBlur={onBlur}>
+      <ListboxInput
+        name={id}
+        value={value}
+        onChange={onChange}
+        onBlur={handleBlur}
+      >
         <ListboxButton
           arrow={<FaCaretDown className={`${baseClass}-arrow`} />}
         />
