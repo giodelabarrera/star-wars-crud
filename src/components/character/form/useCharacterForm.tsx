@@ -87,7 +87,14 @@ function useCharacterForm(initialData: Character) {
       skinColor,
       eyeColor
     }
-    onSubmit(formData)
+    if (getIsValid(formData)) {
+      const parsedFormData = {
+        ...formData,
+        ...(height && {height: mapStringToNumber(height)}),
+        ...(mass && {mass: mapStringToNumber(mass)})
+      }
+      onSubmit(parsedFormData)
+    }
   }
 
   const formData = {
@@ -130,13 +137,13 @@ function useCharacterForm(initialData: Character) {
 
 function mapNumberToString(numberValue) {
   if (numberValue === null) return ''
-  return numberValue
+  return String(numberValue)
 }
 
-// function mapStringToNumber(stringValue) {
-//   if (stringValue === '') return null
-//   return stringValue
-// }
+function mapStringToNumber(stringValue) {
+  if (stringValue === '') return null
+  return Number(stringValue)
+}
 
 function isRequiredValid(value) {
   return !!value
