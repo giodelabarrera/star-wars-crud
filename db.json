@@ -245,6 +245,17 @@
       "created": "2014-12-10T16:16:29.192000Z",
       "edited": "2014-12-20T21:17:50.325000Z",
       "url": "http://swapi.dev/api/people/10/"
+    },
+    {
+      "name": "de",
+      "birth_year": "de",
+      "gender": "female",
+      "height": null,
+      "mass": null,
+      "hair_color": "",
+      "skin_color": "",
+      "eye_color": "",
+      "id": 11
     }
   ]
 }
