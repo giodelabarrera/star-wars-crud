@@ -27,7 +27,7 @@ export default function CharacterCreateScreen() {
     mutate(data, {
       onSuccess: data => {
         const {id} = data
-        navigate(`/${id}`)
+        navigate(`/character/${id}`)
       }
     })
   }

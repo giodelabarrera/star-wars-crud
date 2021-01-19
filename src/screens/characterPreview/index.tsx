@@ -16,7 +16,7 @@ export default function CharacterPreviewScreen() {
   const {character} = useCharacter(id)
 
   const handleEditClick = id => {
-    navigate(`/${id}`)
+    navigate(`/character/${id}`)
   }
 
   return (
