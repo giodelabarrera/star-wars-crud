@@ -54,7 +54,7 @@ function useUpdateCharacter() {
   )
 }
 
-function useRemoveCharacter() {
+function useDeleteCharacter() {
   const domain = useDomain()
   return useMutation(character =>
     domain.get('character__delete_character_use_case').execute(character)
@@ -66,5 +66,5 @@ export {
   useCharacter,
   useCreateCharacter,
   useUpdateCharacter,
-  useRemoveCharacter
+  useDeleteCharacter
 }
