@@ -35,7 +35,7 @@ function useCharacterForm(initialData: Character) {
     else setErrorName(null)
   }
 
-  const handleNameFocus = e => {
+  const handleNameBlur = e => {
     if (!isRequiredValid(e.target.value)) setErrorName({type: 'required'})
     else setErrorName(null)
   }
@@ -46,7 +46,7 @@ function useCharacterForm(initialData: Character) {
     else setErrorBirthYear(null)
   }
 
-  const handleBirthYearFocus = e => {
+  const handleBirthYearBlur = e => {
     if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
     else setErrorBirthYear(null)
   }
@@ -57,7 +57,7 @@ function useCharacterForm(initialData: Character) {
     else setErrorGender(null)
   }
 
-  const handleGenderFocus = e => {
+  const handleGenderBlur = e => {
     if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
@@ -69,7 +69,7 @@ function useCharacterForm(initialData: Character) {
     else setErrorHeight(null)
   }
 
-  const handleHeightFocus = e => {
+  const handleHeightBlur = e => {
     const value = e.target.value
     if (value && !isNumberPatternValid(value)) setErrorHeight({type: 'pattern'})
     else setErrorHeight(null)
@@ -82,7 +82,7 @@ function useCharacterForm(initialData: Character) {
     else setErrorMass(null)
   }
 
-  const handleMassFocus = e => {
+  const handleMassBlur = e => {
     const value = e.target.value
     if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
     else setErrorMass(null)
@@ -151,15 +151,15 @@ function useCharacterForm(initialData: Character) {
     errors,
     isValid,
     handleNameChange,
-    handleNameFocus,
+    handleNameBlur,
     handleBirthYearChange,
-    handleBirthYearFocus,
+    handleBirthYearBlur,
     handleGenderChange,
-    handleGenderFocus,
+    handleGenderBlur,
     handleHeightChange,
-    handleHeightFocus,
+    handleHeightBlur,
     handleMassChange,
-    handleMassFocus,
+    handleMassBlur,
     handleHairColorChange,
     handleSkinColorChange,
     handleEyeColorChange,
