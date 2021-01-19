@@ -20,13 +20,13 @@ export type CharacterRaw = {
 export default function createCharacter({
   id,
   name: nameValue,
+  birthYear: birthYearValue,
+  gender: genderValue,
   height: heightValue,
   mass: massValue,
   hairColor,
   skinColor,
-  eyeColor,
-  birthYear: birthYearValue,
-  gender: genderValue
+  eyeColor
 }: CharacterRaw): Character {
   const name = createCharacterName({value: nameValue})
   const birthYear = createCharacterBirthYear({value: birthYearValue})
@@ -36,12 +36,12 @@ export default function createCharacter({
   return new Character({
     id,
     name,
+    birthYear,
+    gender,
     height,
     mass,
     hairColor,
     skinColor,
-    eyeColor,
-    birthYear,
-    gender
+    eyeColor
   })
 }
