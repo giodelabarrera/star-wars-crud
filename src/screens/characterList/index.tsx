@@ -159,28 +159,32 @@ function CharacterListScreen() {
         </>
       ) : (
         <Paper>
-          <CharacterDataTable
-            characters={characters}
-            onPreviewClick={handlePreviewClick}
-            onEditClick={handleEditClick}
-            editLink={id => props => <Link {...props} to={`/${id}`} />}
-            nameSortDirection={nameSortDirection}
-            birthYearSortDirection={birthYearSortDirection}
-            genderSortDirection={genderSortDirection}
-            heightSortDirection={heightSortDirection}
-            massSortDirection={massSortDirection}
-            hairColorSortDirection={hairColorSortDirection}
-            skinColorSortDirection={skinColorSortDirection}
-            eyeColorSortDirection={eyeColorSortDirection}
-            onNameSort={handleNameSort}
-            onBirthYearSort={handleBirthYearSort}
-            onGenderSort={handleGenderSort}
-            onHeightSort={handleHeightSort}
-            onMassSort={handleMassSort}
-            onHairColorSort={handleHairColorSort}
-            onSkinColorSort={handleSkinColorSort}
-            onEyeColorSort={handleEyeColorSort}
-          />
+          {characters.length ? (
+            <CharacterDataTable
+              characters={characters}
+              onPreviewClick={handlePreviewClick}
+              onEditClick={handleEditClick}
+              editLink={id => props => <Link {...props} to={`/${id}`} />}
+              nameSortDirection={nameSortDirection}
+              birthYearSortDirection={birthYearSortDirection}
+              genderSortDirection={genderSortDirection}
+              heightSortDirection={heightSortDirection}
+              massSortDirection={massSortDirection}
+              hairColorSortDirection={hairColorSortDirection}
+              skinColorSortDirection={skinColorSortDirection}
+              eyeColorSortDirection={eyeColorSortDirection}
+              onNameSort={handleNameSort}
+              onBirthYearSort={handleBirthYearSort}
+              onGenderSort={handleGenderSort}
+              onHeightSort={handleHeightSort}
+              onMassSort={handleMassSort}
+              onHairColorSort={handleHairColorSort}
+              onSkinColorSort={handleSkinColorSort}
+              onEyeColorSort={handleEyeColorSort}
+            />
+          ) : (
+            <NoResults query={query} />
+          )}
         </Paper>
       )}
     </div>
