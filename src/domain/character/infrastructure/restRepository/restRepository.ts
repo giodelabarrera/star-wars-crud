@@ -139,14 +139,14 @@ function mapListResponseToCharactersRaw(response) {
 
 function mapCharacterRawToSingleData(character: Character) {
   return {
-    name: character.name,
-    height: character.height,
-    mass: character.mass,
+    name: character.name.value,
+    birth_year: character.birthYear.value,
+    gender: character.gender.value,
+    height: character.height.value,
+    mass: character.mass.value,
     hair_color: character.hairColor,
     skin_color: character.skinColor,
-    eye_color: character.eyeColor,
-    birth_year: character.birthYear,
-    gender: character.gender.value
+    eye_color: character.eyeColor
   }
 }
 
