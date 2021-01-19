@@ -1,6 +1,8 @@
 import {useState} from 'react'
 
-function useCharacterForm(initialData) {
+import {Character} from '../../../types'
+
+function useCharacterForm(initialData: Character) {
   const {
     name: initialName,
     birthYear: initialBirthYear,
