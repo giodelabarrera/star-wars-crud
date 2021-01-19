@@ -1,7 +1,8 @@
 import CharacterName from '../characterName/characterName'
+import CharacterBirthYear from '../characterBirthYear/characterBirthYear'
+import CharacterGender from '../characterGender/characterGender'
 import CharacterHeight from '../characterHeight/characterHeight'
 import CharacterMass from '../characterMass/characterMass'
-import CharacterGender from '../characterGender/characterGender'
 
 type CharacterProps = {
   id?: number
@@ -11,7 +12,7 @@ type CharacterProps = {
   hairColor: string
   skinColor: string
   eyeColor: string
-  birthYear: string
+  birthYear: CharacterBirthYear
   gender: CharacterGender
 }
 
@@ -23,7 +24,7 @@ export default class Character {
   readonly hairColor: string
   readonly skinColor: string
   readonly eyeColor: string
-  readonly birthYear: string
+  readonly birthYear: CharacterBirthYear
   readonly gender: CharacterGender
 
   constructor({
@@ -52,13 +53,13 @@ export default class Character {
     return {
       id: this.id,
       name: this.name.toJson().value,
+      birthYear: this.birthYear.toJson().value,
+      gender: this.gender.toJson().value,
       height: this.height.toJson().value,
       mass: this.mass.toJson().value,
       hairColor: this.hairColor,
       skinColor: this.skinColor,
-      eyeColor: this.eyeColor,
-      birthYear: this.birthYear,
-      gender: this.gender.toJson().value
+      eyeColor: this.eyeColor
     }
   }
 }
