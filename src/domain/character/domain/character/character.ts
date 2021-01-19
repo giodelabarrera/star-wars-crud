@@ -7,13 +7,13 @@ import CharacterMass from '../characterMass/characterMass'
 type CharacterProps = {
   id?: number
   name: CharacterName
-  height: CharacterHeight
-  mass: CharacterMass
-  hairColor: string
-  skinColor: string
-  eyeColor: string
   birthYear: CharacterBirthYear
   gender: CharacterGender
+  height?: CharacterHeight
+  mass?: CharacterMass
+  hairColor?: string
+  skinColor?: string
+  eyeColor?: string
 }
 
 export default class Character {

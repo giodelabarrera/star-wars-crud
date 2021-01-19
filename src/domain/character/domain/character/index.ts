@@ -8,13 +8,13 @@ import createCharacterBirthYear from '../characterBirthYear'
 export type CharacterRaw = {
   id?: number
   name: string
-  height: number
-  mass: number
-  hairColor: string
-  skinColor: string
-  eyeColor: string
   birthYear: string
   gender: string
+  height?: number
+  mass?: number
+  hairColor?: string
+  skinColor?: string
+  eyeColor?: string
 }
 
 export default function createCharacter({
