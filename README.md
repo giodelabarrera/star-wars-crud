@@ -6,7 +6,7 @@ Features:
 
 - Intuitive UX/UI
 - Performant
-- Hexagonal Arquitecture
+- Hexagonal Architecture
 - React hooks
 - UI components
 - Custom Properties CSS
