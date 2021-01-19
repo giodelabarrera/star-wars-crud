@@ -1,3 +1,5 @@
+import {useNavigate} from 'react-router-dom'
+
 import CharacterForm from '../../components/character/form'
 import {useCreateCharacter} from '../../components/character/hooks'
 import Paper from '../../components/ui/paper'
@@ -6,28 +8,37 @@ import './index.scss'
 
 const baseClass = 'sw-CharacterCreateScreen'
 
-const formData = {
-  name: 'Anakin Skywalker',
-  birthYear: '1990',
-  gender: 'male',
-  height: 180,
-  mass: 90,
-  hairColor: 'brown',
-  skinColor: 'fair',
-  eyeColor: 'blue'
+const initialFormData = {
+  name: '',
+  birthYear: '',
+  gender: '',
+  height: null,
+  mass: null,
+  hairColor: '',
+  skinColor: '',
+  eyeColor: ''
 }
 
 export default function CharacterCreateScreen() {
+  const navigate = useNavigate()
   const {mutate} = useCreateCharacter()
 
-  const handleCharacterForm = data => {
-    mutate(data)
+  const handleCharacterFormSubmit = data => {
+    mutate(data, {
+      onSuccess: data => {
+        const {id} = data
+        navigate(`/${id}`)
+      }
+    })
   }
 
   return (
     <div className={baseClass}>
       <Paper>
-        <CharacterForm initialData={formData} onSubmit={handleCharacterForm} />
+        <CharacterForm
+          initialData={initialFormData}
+          onSubmit={handleCharacterFormSubmit}
+        />
       </Paper>
     </div>
   )

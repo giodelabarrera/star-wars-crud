@@ -14,8 +14,8 @@ test('should create a character', async () => {
   const fakeCharacter = {
     id: 11,
     name: 'Anakin Skywalker',
-    height: '188',
-    mass: '84',
+    height: 188,
+    mass: 84,
     hair_color: 'blond',
     skin_color: 'fair',
     eye_color: 'blue',
@@ -27,8 +27,8 @@ test('should create a character', async () => {
   const characterCreator = createCharacterCreator()
   const params: CharacterRaw = {
     name: 'Anakin Skywalker',
-    height: '188',
-    mass: '84',
+    height: 188,
+    mass: 84,
     hairColor: 'blond',
     skinColor: 'fair',
     eyeColor: 'blue',

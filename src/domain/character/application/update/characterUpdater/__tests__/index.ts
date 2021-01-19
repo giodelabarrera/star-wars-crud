@@ -15,8 +15,8 @@ test('should update a character', async () => {
   const fakeCharacter = {
     id: 1,
     name: 'Luke Skywalker',
-    height: '182',
-    mass: '80',
+    height: 182,
+    mass: 80,
     hair_color: 'blond',
     skin_color: 'fair',
     eye_color: 'brown',
@@ -29,8 +29,8 @@ test('should update a character', async () => {
   const params: CharacterRaw = {
     id: 1,
     name: 'Luke Skywalker',
-    height: '182',
-    mass: '80',
+    height: 182,
+    mass: 80,
     hairColor: 'blond',
     skinColor: 'fair',
     eyeColor: 'brown',
@@ -42,7 +42,7 @@ test('should update a character', async () => {
   expect(updatedCharacter).toBeDefined()
   expect(updatedCharacter).not.toBeNull()
   expect(updatedCharacter).toHaveProperty('id', id)
-  expect(updatedCharacter.height).toBe('182')
-  expect(updatedCharacter.mass).toBe('80')
+  expect(updatedCharacter.height).toBe(182)
+  expect(updatedCharacter.mass).toBe(80)
   expect(updatedCharacter.eyeColor).toBe('brown')
 })

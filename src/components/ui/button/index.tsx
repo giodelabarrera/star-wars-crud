@@ -22,6 +22,7 @@ export default function Button({
   endIcon,
   children,
   className: classNameProp,
+  disabled: disabledProp = false,
   ...restProps
 }: ButtonProps) {
   return (
@@ -30,6 +31,7 @@ export default function Button({
         baseClass,
         `${baseClass}-${variant}`,
         `${baseClass}-${color}`,
+        {[`${baseClass}-isDisabled`]: disabledProp},
         classNameProp
       )}
       {...restProps}

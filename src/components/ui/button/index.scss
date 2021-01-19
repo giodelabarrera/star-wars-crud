@@ -23,6 +23,28 @@ $baseClass: '.sw-uiButton';
     margin-left: 8px;
   }
 
+  &-isDisabled {
+    cursor: default;
+    pointer-events: none;
+
+    &#{$baseClass}-text {
+      &#{$baseClass}-default,
+      &#{$baseClass}-primary,
+      &#{$baseClass}-secondary {
+        color: rgba(0, 0, 0, 0.26);
+      }
+    }
+
+    &#{$baseClass}-contained {
+      &#{$baseClass}-default,
+      &#{$baseClass}-primary,
+      &#{$baseClass}-secondary {
+        background-color: rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.26);
+      }
+    }
+  }
+
   &-text {
     &#{$baseClass}-default {
       color: var(--c-gray-2);

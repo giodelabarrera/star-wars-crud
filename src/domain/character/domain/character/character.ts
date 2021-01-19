@@ -1,61 +1,65 @@
+import CharacterName from '../characterName/characterName'
+import CharacterBirthYear from '../characterBirthYear/characterBirthYear'
 import CharacterGender from '../characterGender/characterGender'
+import CharacterHeight from '../characterHeight/characterHeight'
+import CharacterMass from '../characterMass/characterMass'
 
 type CharacterProps = {
   id?: number
-  name: string
-  height: number
-  mass: number
-  hairColor: string
-  skinColor: string
-  eyeColor: string
-  birthYear: string
+  name: CharacterName
+  birthYear: CharacterBirthYear
   gender: CharacterGender
+  height?: CharacterHeight
+  mass?: CharacterMass
+  hairColor?: string
+  skinColor?: string
+  eyeColor?: string
 }
 
 export default class Character {
-  readonly id: number | undefined
-  readonly name: string
-  readonly height: number
-  readonly mass: number
+  readonly id: number
+  readonly name: CharacterName
+  readonly birthYear: CharacterBirthYear
+  readonly gender: CharacterGender
+  readonly height: CharacterHeight
+  readonly mass: CharacterMass
   readonly hairColor: string
   readonly skinColor: string
   readonly eyeColor: string
-  readonly birthYear: string
-  readonly gender: CharacterGender
 
   constructor({
     id,
     name,
+    birthYear,
+    gender,
     height,
     mass,
     hairColor,
     skinColor,
-    eyeColor,
-    birthYear,
-    gender
+    eyeColor
   }: CharacterProps) {
     this.id = id
     this.name = name
+    this.birthYear = birthYear
+    this.gender = gender
     this.height = height
     this.mass = mass
     this.hairColor = hairColor
     this.skinColor = skinColor
     this.eyeColor = eyeColor
-    this.birthYear = birthYear
-    this.gender = gender
   }
 
   toJson() {
     return {
       id: this.id,
-      name: this.name,
-      height: this.height,
-      mass: this.mass,
+      name: this.name.toJson().value,
+      birthYear: this.birthYear.toJson().value,
+      gender: this.gender.toJson().value,
+      height: this.height.toJson().value,
+      mass: this.mass.toJson().value,
       hairColor: this.hairColor,
       skinColor: this.skinColor,
-      eyeColor: this.eyeColor,
-      birthYear: this.birthYear,
-      gender: this.gender.toJson().value
+      eyeColor: this.eyeColor
     }
   }
 }

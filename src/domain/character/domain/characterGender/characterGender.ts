@@ -1,3 +1,5 @@
+import InvalidArgumentException from '../../../shared/domain/invalidArgumentException'
+
 const TYPES = {
   MALE: 'male',
   FEMALE: 'female',
@@ -15,7 +17,14 @@ export default class CharacterGender {
   readonly value: CharacterGenderType
 
   constructor({value}: CharacterGenderProps) {
+    if (!this.ensureIsValid(value)) {
+      throw new InvalidArgumentException(`The value ${value} is not accepted`)
+    }
     this.value = value
+  }
+
+  private ensureIsValid(value) {
+    return Object.values(TYPES).includes(value)
   }
 
   toJson() {

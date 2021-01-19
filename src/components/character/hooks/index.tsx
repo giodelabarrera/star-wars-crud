@@ -33,7 +33,7 @@ function useSearchCharacters(query, sortFields) {
 function useCharacter(id) {
   const domain = useDomain()
   const result = useQuery({
-    queryKey: ['retrieve-character', {id}],
+    queryKey: ['retrieve_character', {id}],
     queryFn: () =>
       domain.get('character__retrieve_character_use_case').execute({id})
   })
@@ -47,4 +47,16 @@ function useCreateCharacter() {
   )
 }
 
-export {useSearchCharacters, useCharacter, useCreateCharacter}
+function useUpdateCharacter() {
+  const domain = useDomain()
+  return useMutation(character =>
+    domain.get('character__update_character_use_case').execute(character)
+  )
+}
+
+export {
+  useSearchCharacters,
+  useCharacter,
+  useCreateCharacter,
+  useUpdateCharacter
+}

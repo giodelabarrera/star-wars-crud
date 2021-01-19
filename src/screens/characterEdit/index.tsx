@@ -1,8 +1,11 @@
 import {FaTrash} from 'react-icons/fa'
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 
 import CharacterForm from '../../components/character/form'
-import {useCharacter} from '../../components/character/hooks'
+import {
+  useCharacter,
+  useUpdateCharacter
+} from '../../components/character/hooks'
 import Button from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
 
@@ -12,9 +15,20 @@ const baseClass = 'sw-CharacterEditScreen'
 
 export default function CharacterEditScreen() {
   const {id} = useParams()
+  const navigate = useNavigate()
+
   const {character, isSuccess} = useCharacter(id)
 
-  const handleCharacterForm = data => {}
+  const {mutate} = useUpdateCharacter()
+
+  const handleCharacterFormSubmit = data => {
+    const identifiedData = {...data, id}
+    mutate(identifiedData, {
+      onSuccess: () => {
+        navigate(`/`)
+      }
+    })
+  }
 
   return (
     <div className={baseClass}>
@@ -22,7 +36,7 @@ export default function CharacterEditScreen() {
         {isSuccess && (
           <CharacterForm
             initialData={character}
-            onSubmit={handleCharacterForm}
+            onSubmit={handleCharacterFormSubmit}
             secondAction={
               <Button
                 startIcon={<FaTrash />}
