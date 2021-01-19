@@ -6,6 +6,7 @@ import './index.scss'
 const baseClass = 'sw-uiSelect'
 
 export default function Select({
+  id,
   className: classNameProp,
   value,
   onChange,
@@ -14,7 +15,7 @@ export default function Select({
 }) {
   return (
     <div className={baseClass}>
-      <Listbox value={value} onChange={onChange}>
+      <Listbox aria-labelledby={id} value={value} onChange={onChange}>
         {children}
       </Listbox>
     </div>
