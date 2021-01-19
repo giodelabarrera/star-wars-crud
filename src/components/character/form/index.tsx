@@ -10,6 +10,7 @@ import Select from '../../ui/select'
 import SelectOption from '../../ui/selectOption'
 import useCharacterForm from './useCharacterForm'
 import './index.scss'
+import {GENDER_TYPES} from './types'
 
 const baseClass = 'sw-CharacterForm'
 
@@ -119,9 +120,9 @@ function CharacterForm({
             value={gender}
           >
             <SelectOption value="default">Choose a gender</SelectOption>
-            <SelectOption value="male">Male</SelectOption>
-            <SelectOption value="female">Female</SelectOption>
-            <SelectOption value="n/a">N/A</SelectOption>
+            <SelectOption value={GENDER_TYPES.male}>male</SelectOption>
+            <SelectOption value={GENDER_TYPES.female}>female</SelectOption>
+            <SelectOption value={GENDER_TYPES['n/a']}>n/a</SelectOption>
           </Select>
         </div>
       </div>

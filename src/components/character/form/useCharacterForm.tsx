@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
 import {Character} from '../../../types'
+import {GENDER_TYPES} from './types'
 
 function useCharacterForm(initialData: Character) {
   const {
@@ -59,8 +60,9 @@ function useCharacterForm(initialData: Character) {
     else setErrorGender(null)
   }
 
-  const handleGenderBlur = e => {
-    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+  const handleGenderBlur = value => {
+    if (!isRequiredValid(value)) setErrorGender({type: 'required'})
+    else if (!isGenderPatternValid(value)) setErrorGender({type: 'pattern'})
     else setErrorGender(null)
   }
 
@@ -198,6 +200,10 @@ function isNumberPatternValid(value) {
   return Number(value)
 }
 
+function isGenderPatternValid(value) {
+  return Object.keys(GENDER_TYPES).includes(value)
+}
+
 function getIsValid(formData) {
   const {name, birthYear, gender, height, mass} = formData
 
@@ -206,6 +212,8 @@ function getIsValid(formData) {
 
   const numberPatternValues = [height, mass].filter(Boolean)
   if (!numberPatternValues.every(isNumberPatternValid)) return false
+
+  if (!isGenderPatternValid(gender)) return false
 
   return true
 }
