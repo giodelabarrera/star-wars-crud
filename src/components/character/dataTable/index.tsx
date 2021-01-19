@@ -10,6 +10,7 @@ import TableCell, {
   TableCellDirection,
   TableCellOnSort
 } from '../../ui/tableCell'
+import useMediaQuery from '../../../hooks/useMediaQuery'
 
 import './index.scss'
 
@@ -60,6 +61,7 @@ function CharacterDataTable({
   onSkinColorSort,
   onEyeColorSort
 }: CharacterDataTableProps) {
+  const isLargeDesktop = useMediaQuery('(min-width: 1200px)')
   return (
     <div className={baseClass}>
       <Table>
@@ -149,20 +151,30 @@ function CharacterDataTable({
                 <TableCell>{character.eyeColor}</TableCell>
                 <TableCell>
                   <Button
-                    startIcon={<FaEye />}
                     color="primary"
                     onClick={() => onPreviewClick(character.id)}
                     className={`${baseClass}-showButton`}
-                  >
-                    Show
-                  </Button>
+                    {...(isLargeDesktop
+                      ? {
+                          startIcon: <FaEye />,
+                          children: 'Show'
+                        }
+                      : {
+                          children: <FaEye />
+                        })}
+                  />
                   <Button
-                    startIcon={<FaPen />}
                     color="primary"
                     onClick={() => onEditClick(character.id)}
-                  >
-                    Edit
-                  </Button>
+                    {...(isLargeDesktop
+                      ? {
+                          startIcon: <FaPen />,
+                          children: 'Edit'
+                        }
+                      : {
+                          children: <FaPen />
+                        })}
+                  />
                 </TableCell>
               </TableRow>
             )
