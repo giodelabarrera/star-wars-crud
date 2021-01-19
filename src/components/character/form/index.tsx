@@ -113,7 +113,7 @@ function CharacterForm({
             id="gender"
             onChange={handleGenderChange}
             onBlur={handleGenderBlur}
-            className={cx(`${baseClass}-input`, {
+            className={cx(`${baseClass}-select`, {
               [`${baseClass}-hasError`]: errors?.gender
             })}
             value={gender}
