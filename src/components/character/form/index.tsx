@@ -23,7 +23,7 @@ function CharacterForm({
 }: CharacterFormProps) {
   const {
     formData,
-    errors,
+
     handleNameChange,
     handleBirthYearChange,
     handleGenderChange,
@@ -31,7 +31,8 @@ function CharacterForm({
     handleMassChange,
     handleHairColorChange,
     handleSkinColorChange,
-    handleEyeColorChange
+    handleEyeColorChange,
+    handleSubmit
   } = useCharacterForm(initialData)
   const {
     name,
@@ -44,25 +45,8 @@ function CharacterForm({
     eyeColor
   } = formData
 
-  console.log(errors)
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const data = {
-      name,
-      birthYear,
-      gender,
-      height,
-      mass,
-      hairColor,
-      skinColor,
-      eyeColor
-    }
-    onSubmit(data)
-  }
-
   return (
-    <form className={baseClass} onSubmit={handleSubmit}>
+    <form className={baseClass} onSubmit={handleSubmit(onSubmit)}>
       <div className={`${baseClass}-fieldGroup`}>
         <h3>Identity</h3>
         <div className={`${baseClass}-textField`}>

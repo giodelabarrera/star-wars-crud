@@ -31,33 +31,33 @@ function useCharacterForm(initialData: Character) {
 
   const handleNameChange = e => {
     setName(e.target.value)
-    if (!e.target.value) setErrorName({type: 'required'})
+    if (!isRequiredValid(e.target.value)) setErrorName({type: 'required'})
     else setErrorName(null)
   }
 
   const handleBirthYearChange = e => {
     setBirthYear(e.target.value)
-    if (!e.target.value) setErrorBirthYear({type: 'required'})
+    if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
     else setErrorBirthYear(null)
   }
 
   const handleGenderChange = e => {
     setGender(e.target.value)
-    if (!e.target.value) setErrorGender({type: 'required'})
+    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
 
   const handleHeightChange = e => {
     const value = e.target.value
     setHeight(value)
-    if (value && !Number(value)) setErrorHeight({type: 'pattern'})
+    if (value && !isNumberPatternValid(value)) setErrorHeight({type: 'pattern'})
     else setErrorHeight(null)
   }
 
   const handleMassChange = e => {
     const value = e.target.value
     setMass(value)
-    if (value && !Number(value)) setErrorMass({type: 'pattern'})
+    if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
     else setErrorMass(null)
   }
 
@@ -71,6 +71,23 @@ function useCharacterForm(initialData: Character) {
 
   const handleEyeColorChange = e => {
     setEyeColor(e.target.value)
+  }
+
+  const handleSubmit = (onSubmit: (data: Record<string, unknown>) => void) => (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault()
+    const formData = {
+      name,
+      birthYear,
+      gender,
+      height,
+      mass,
+      hairColor,
+      skinColor,
+      eyeColor
+    }
+    onSubmit(formData)
   }
 
   const formData = {
@@ -93,9 +110,12 @@ function useCharacterForm(initialData: Character) {
   }
   if (!Object.keys(errors).length) errors = null
 
+  const isValid = getIsValid(formData)
+
   return {
     formData,
     errors,
+    isValid,
     handleNameChange,
     handleBirthYearChange,
     handleGenderChange,
@@ -103,7 +123,8 @@ function useCharacterForm(initialData: Character) {
     handleMassChange,
     handleHairColorChange,
     handleSkinColorChange,
-    handleEyeColorChange
+    handleEyeColorChange,
+    handleSubmit
   }
 }
 
@@ -116,5 +137,25 @@ function mapNumberToString(numberValue) {
 //   if (stringValue === '') return null
 //   return stringValue
 // }
+
+function isRequiredValid(value) {
+  return !!value
+}
+
+function isNumberPatternValid(value) {
+  return Number(value)
+}
+
+function getIsValid(formData) {
+  const {name, birthYear, gender, height, mass} = formData
+
+  const requiredValues = [name, birthYear, gender]
+  if (!requiredValues.every(isRequiredValid)) return false
+
+  const numberPatternValues = [height, mass].filter(Boolean)
+  if (!numberPatternValues.every(isNumberPatternValid)) return false
+
+  return true
+}
 
 export default useCharacterForm
