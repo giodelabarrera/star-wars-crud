@@ -1,4 +1,9 @@
 .sw-CharacterEditScreen {
+  @media (min-width: 576px) {
+    width: 570px;
+    margin: 0 auto;
+  }
+
   &-deleteButton {
     &.sw-uiButton-text.sw-uiButton-default {
       color: var(--c-error);
