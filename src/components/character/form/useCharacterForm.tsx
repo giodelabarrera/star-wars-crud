@@ -35,14 +35,29 @@ function useCharacterForm(initialData: Character) {
     else setErrorName(null)
   }
 
+  const handleNameBlur = e => {
+    if (!isRequiredValid(e.target.value)) setErrorName({type: 'required'})
+    else setErrorName(null)
+  }
+
   const handleBirthYearChange = e => {
     setBirthYear(e.target.value)
     if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
     else setErrorBirthYear(null)
   }
 
+  const handleBirthYearBlur = e => {
+    if (!isRequiredValid(e.target.value)) setErrorBirthYear({type: 'required'})
+    else setErrorBirthYear(null)
+  }
+
   const handleGenderChange = e => {
     setGender(e.target.value)
+    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+    else setErrorGender(null)
+  }
+
+  const handleGenderBlur = e => {
     if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
@@ -54,9 +69,21 @@ function useCharacterForm(initialData: Character) {
     else setErrorHeight(null)
   }
 
+  const handleHeightBlur = e => {
+    const value = e.target.value
+    if (value && !isNumberPatternValid(value)) setErrorHeight({type: 'pattern'})
+    else setErrorHeight(null)
+  }
+
   const handleMassChange = e => {
     const value = e.target.value
     setMass(value)
+    if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
+    else setErrorMass(null)
+  }
+
+  const handleMassBlur = e => {
+    const value = e.target.value
     if (value && !isNumberPatternValid(value)) setErrorMass({type: 'pattern'})
     else setErrorMass(null)
   }
@@ -124,10 +151,15 @@ function useCharacterForm(initialData: Character) {
     errors,
     isValid,
     handleNameChange,
+    handleNameBlur,
     handleBirthYearChange,
+    handleBirthYearBlur,
     handleGenderChange,
+    handleGenderBlur,
     handleHeightChange,
+    handleHeightBlur,
     handleMassChange,
+    handleMassBlur,
     handleHairColorChange,
     handleSkinColorChange,
     handleEyeColorChange,

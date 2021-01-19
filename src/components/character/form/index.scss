@@ -1,3 +1,5 @@
+$baseClass: '.sw-CharacterForm';
+
 .sw-CharacterForm {
   &-textField {
     margin-bottom: 16px;
@@ -19,6 +21,18 @@
   }
 
   &-labelHelp {
-    color: var(--c-gray-3)
+    color: var(--c-gray-3);
+  }
+
+  &-label {
+    &#{$baseClass}-hasError {
+      color: var(--c-error);
+    }
+  }
+
+  &-input {
+    &#{$baseClass}-hasError {
+      border-color: var(--c-error);
+    }
   }
 }
