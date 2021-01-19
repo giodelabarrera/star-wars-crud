@@ -7,8 +7,10 @@ import {
   useDeleteCharacter,
   useUpdateCharacter
 } from '../../components/character/hooks'
+import CharacterNotFound from '../../components/character/notFound'
 import Button from '../../components/ui/button'
 import Paper from '../../components/ui/paper'
+import Spinner from '../../components/ui/spinner'
 
 import './index.scss'
 
@@ -20,7 +22,7 @@ export default function CharacterEditScreen() {
 
   const navigate = useNavigate()
 
-  const {character, isSuccess} = useCharacter(id)
+  const {character, isLoading, isError} = useCharacter(id)
 
   const {mutate: mutateUpdateCharacter} = useUpdateCharacter()
   const {mutate: mutateDeleteCharacter} = useDeleteCharacter()
@@ -48,7 +50,11 @@ export default function CharacterEditScreen() {
   return (
     <div className={baseClass}>
       <Paper>
-        {isSuccess && (
+        {isLoading ? (
+          <Spinner />
+        ) : isError ? (
+          <CharacterNotFound />
+        ) : (
           <CharacterForm
             initialData={character}
             onSubmit={handleCharacterFormSubmit}

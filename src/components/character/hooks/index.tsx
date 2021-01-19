@@ -31,12 +31,13 @@ function useSearchCharacters(query, sortFields) {
   return {...result, characters: result.data ?? loadingCharacters}
 }
 
-function useCharacter(id: number) {
+function useCharacter(id) {
   const domain = useDomain()
   const result = useQuery({
     queryKey: ['retrieve_character', {id}],
     queryFn: () =>
-      domain.get('character__retrieve_character_use_case').execute({id})
+      domain.get('character__retrieve_character_use_case').execute({id}),
+    retry: 1
   })
   return {...result, character: result.data ?? loadingCharacter}
 }

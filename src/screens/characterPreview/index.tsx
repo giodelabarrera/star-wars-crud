@@ -1,6 +1,7 @@
 import {useNavigate, useParams} from 'react-router-dom'
 
 import {useCharacter} from '../../components/character/hooks'
+import CharacterNotFound from '../../components/character/notFound'
 import CharacterPreview from '../../components/character/preview'
 import Paper from '../../components/ui/paper'
 
@@ -9,11 +10,11 @@ import './index.scss'
 const baseClass = 'sw-CharacterPreviewScreen'
 
 export default function CharacterPreviewScreen() {
-  const {id: idQueryValue} = useParams()
-  const id = Number(idQueryValue)
+  const {id} = useParams()
+
   const navigate = useNavigate()
 
-  const {character} = useCharacter(id)
+  const {character, isLoading, isSuccess} = useCharacter(id)
 
   const handleEditClick = id => {
     navigate(`/character/${id}`)
@@ -22,7 +23,14 @@ export default function CharacterPreviewScreen() {
   return (
     <div className={baseClass}>
       <Paper>
-        <CharacterPreview character={character} onEditClick={handleEditClick} />
+        {isLoading || isSuccess ? (
+          <CharacterPreview
+            character={character}
+            onEditClick={handleEditClick}
+          />
+        ) : (
+          <CharacterNotFound />
+        )}
       </Paper>
     </div>
   )
