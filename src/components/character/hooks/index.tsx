@@ -1,4 +1,4 @@
-import {useQuery, useMutation} from 'react-query'
+import {useQuery, useMutation, useQueryClient} from 'react-query'
 
 import {useDomain} from '../../../context/domain'
 import {Character} from '../../../types'
@@ -43,22 +43,45 @@ function useCharacter(id: number) {
 
 function useCreateCharacter() {
   const domain = useDomain()
-  return useMutation((character: Character) =>
-    domain.get('character__create_character_use_case').execute(character)
+  const queryClient = useQueryClient()
+  return useMutation(
+    (character: Character) =>
+      domain.get('character__create_character_use_case').execute(character),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('search_characters')
+        queryClient.invalidateQueries('retrieve_character')
+      }
+    }
   )
 }
 
 function useUpdateCharacter() {
   const domain = useDomain()
-  return useMutation((character: Character) =>
-    domain.get('character__update_character_use_case').execute(character)
+  const queryClient = useQueryClient()
+  return useMutation(
+    (character: Character) =>
+      domain.get('character__update_character_use_case').execute(character),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('search_characters')
+        queryClient.invalidateQueries('retrieve_character')
+      }
+    }
   )
 }
 
 function useDeleteCharacter() {
   const domain = useDomain()
-  return useMutation(({id}: {id: number}) =>
-    domain.get('character__delete_character_use_case').execute({id})
+  const queryClient = useQueryClient()
+  return useMutation(
+    ({id}: {id: number}) =>
+      domain.get('character__delete_character_use_case').execute({id}),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('search_characters')
+      }
+    }
   )
 }
 
