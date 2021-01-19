@@ -12,6 +12,14 @@ import './index.scss'
 
 const baseClass = 'sw-uiSelect'
 
+type SelectProps = React.PropsWithChildren<{
+  id?: string
+  className?: string
+  value: string
+  onChange: (newValue: string) => void
+  onBlur: (newValue: string) => void
+}>
+
 export default function Select({
   id,
   className: classNameProp,
@@ -19,7 +27,7 @@ export default function Select({
   onChange,
   onBlur,
   children
-}) {
+}: SelectProps) {
   const handleBlur = e => {
     if (
       e.currentTarget.attributes.getNamedItem('data-state').value === 'closed'
