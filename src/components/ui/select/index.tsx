@@ -1,4 +1,10 @@
-import {Listbox} from '@reach/listbox'
+import cx from 'classnames'
+import {
+  ListboxButton,
+  ListboxInput,
+  ListboxList,
+  ListboxPopover
+} from '@reach/listbox'
 import {FaCaretDown} from 'react-icons/fa'
 
 import '@reach/listbox/styles.css'
@@ -11,19 +17,19 @@ export default function Select({
   className: classNameProp,
   value,
   onChange,
-  children,
-  ...restProps
+  onBlur,
+  children
 }) {
   return (
-    <div className={baseClass}>
-      <Listbox
-        name={id}
-        value={value}
-        onChange={onChange}
-        arrow={<FaCaretDown className={`${baseClass}-arrow`} />}
-      >
-        {children}
-      </Listbox>
+    <div className={cx(baseClass, classNameProp)}>
+      <ListboxInput name={id} value={value} onChange={onChange} onBlur={onBlur}>
+        <ListboxButton
+          arrow={<FaCaretDown className={`${baseClass}-arrow`} />}
+        />
+        <ListboxPopover>
+          <ListboxList>{children}</ListboxList>
+        </ListboxPopover>
+      </ListboxInput>
     </div>
   )
 }

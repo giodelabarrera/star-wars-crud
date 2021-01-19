@@ -33,6 +33,7 @@ function CharacterForm({
     handleBirthYearChange,
     handleBirthYearBlur,
     handleGenderChange,
+    handleGenderBlur,
     handleHeightChange,
     handleHeightBlur,
     handleMassChange,
@@ -111,6 +112,7 @@ function CharacterForm({
           <Select
             id="gender"
             onChange={handleGenderChange}
+            onBlur={handleGenderBlur}
             className={cx(`${baseClass}-input`, {
               [`${baseClass}-hasError`]: errors?.gender
             })}
