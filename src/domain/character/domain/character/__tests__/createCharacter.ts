@@ -3,8 +3,8 @@ import createCharacter from '..'
 test('should create a character', () => {
   const characterRaw = {
     name: 'Luke Skywalker',
-    height: '172',
-    mass: '77',
+    height: 172,
+    mass: 77,
     hairColor: 'blond',
     skinColor: 'fair',
     eyeColor: 'blue',
@@ -13,7 +13,8 @@ test('should create a character', () => {
   }
   const character = createCharacter(characterRaw)
   expect(character).toHaveProperty('name', characterRaw.name)
-  expect(character).toHaveProperty('height', characterRaw.height)
+  expect(character).toHaveProperty('height.value')
+  expect(character.height.value).toBe(characterRaw.height)
   expect(character).toHaveProperty('mass', characterRaw.mass)
   expect(character).toHaveProperty('hairColor', characterRaw.hairColor)
   expect(character).toHaveProperty('skinColor', characterRaw.skinColor)
