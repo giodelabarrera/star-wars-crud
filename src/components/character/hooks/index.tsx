@@ -1,6 +1,7 @@
 import {useQuery, useMutation} from 'react-query'
 
 import {useDomain} from '../../../context/domain'
+import {Character} from '../../../types'
 
 const loadingCharacter = {
   name: 'Loading...',
@@ -30,7 +31,7 @@ function useSearchCharacters(query, sortFields) {
   return {...result, characters: result.data ?? loadingCharacters}
 }
 
-function useCharacter(id) {
+function useCharacter(id: number) {
   const domain = useDomain()
   const result = useQuery({
     queryKey: ['retrieve_character', {id}],
@@ -42,22 +43,22 @@ function useCharacter(id) {
 
 function useCreateCharacter() {
   const domain = useDomain()
-  return useMutation(character =>
+  return useMutation((character: Character) =>
     domain.get('character__create_character_use_case').execute(character)
   )
 }
 
 function useUpdateCharacter() {
   const domain = useDomain()
-  return useMutation(character =>
+  return useMutation((character: Character) =>
     domain.get('character__update_character_use_case').execute(character)
   )
 }
 
 function useDeleteCharacter() {
   const domain = useDomain()
-  return useMutation(character =>
-    domain.get('character__delete_character_use_case').execute(character)
+  return useMutation(({id}: {id: number}) =>
+    domain.get('character__delete_character_use_case').execute({id})
   )
 }
 
