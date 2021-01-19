@@ -1,10 +1,11 @@
-import CharacterGender from '../characterGender/characterGender'
+import CharacterName from '../characterName/characterName'
 import CharacterHeight from '../characterHeight/characterHeight'
 import CharacterMass from '../characterMass/characterMass'
+import CharacterGender from '../characterGender/characterGender'
 
 type CharacterProps = {
   id?: number
-  name: string
+  name: CharacterName
   height: CharacterHeight
   mass: CharacterMass
   hairColor: string
@@ -16,7 +17,7 @@ type CharacterProps = {
 
 export default class Character {
   readonly id: number
-  readonly name: string
+  readonly name: CharacterName
   readonly height: CharacterHeight
   readonly mass: CharacterMass
   readonly hairColor: string
@@ -50,7 +51,7 @@ export default class Character {
   toJson() {
     return {
       id: this.id,
-      name: this.name,
+      name: this.name.toJson().value,
       height: this.height.toJson().value,
       mass: this.mass.toJson().value,
       hairColor: this.hairColor,

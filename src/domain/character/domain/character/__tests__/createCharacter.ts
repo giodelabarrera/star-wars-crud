@@ -12,7 +12,8 @@ test('should create a character', () => {
     gender: 'male'
   }
   const character = createCharacter(characterRaw)
-  expect(character).toHaveProperty('name', characterRaw.name)
+  expect(character).toHaveProperty('name')
+  expect(character.name.value).toBe(characterRaw.name)
   expect(character).toHaveProperty('height.value')
   expect(character.height.value).toBe(characterRaw.height)
   expect(character).toHaveProperty('mass.value')
