@@ -16,7 +16,9 @@ function useCharacterForm(initialData: Character) {
 
   const [name, setName] = useState(initialName)
   const [birthYear, setBirthYear] = useState(initialBirthYear)
-  const [gender, setGender] = useState(initialGender)
+  const [gender, setGender] = useState(() =>
+    mapGenderValueToGenderFormValue(initialGender)
+  )
   const [height, setHeight] = useState(() => mapNumberToString(initialHeight))
   const [mass, setMass] = useState(() => mapNumberToString(initialMass))
   const [hairColor, setHairColor] = useState(initialHairColor)
@@ -51,9 +53,9 @@ function useCharacterForm(initialData: Character) {
     else setErrorBirthYear(null)
   }
 
-  const handleGenderChange = e => {
-    setGender(e.target.value)
-    if (!isRequiredValid(e.target.value)) setErrorGender({type: 'required'})
+  const handleGenderChange = value => {
+    setGender(value)
+    if (!isRequiredValid(value)) setErrorGender({type: 'required'})
     else setErrorGender(null)
   }
 
@@ -117,6 +119,7 @@ function useCharacterForm(initialData: Character) {
     if (getIsValid(formData)) {
       const parsedFormData = {
         ...formData,
+        gender: mapGenderFormValueToGenderValue(gender),
         height: mapStringToNumber(height),
         mass: mapStringToNumber(mass)
       }
@@ -175,6 +178,16 @@ function mapNumberToString(numberValue) {
 function mapStringToNumber(stringValue) {
   if (stringValue === '') return null
   return Number(stringValue)
+}
+
+function mapGenderValueToGenderFormValue(genderValue) {
+  if (genderValue === null) return 'default'
+  return genderValue
+}
+
+function mapGenderFormValueToGenderValue(genderFormValue) {
+  if (genderFormValue === 'default') return null
+  return genderFormValue
 }
 
 function isRequiredValid(value) {
