@@ -19,34 +19,34 @@ type CharacterProps = {
 export default class Character {
   readonly id: number
   readonly name: CharacterName
+  readonly birthYear: CharacterBirthYear
+  readonly gender: CharacterGender
   readonly height: CharacterHeight
   readonly mass: CharacterMass
   readonly hairColor: string
   readonly skinColor: string
   readonly eyeColor: string
-  readonly birthYear: CharacterBirthYear
-  readonly gender: CharacterGender
 
   constructor({
     id,
     name,
+    birthYear,
+    gender,
     height,
     mass,
     hairColor,
     skinColor,
-    eyeColor,
-    birthYear,
-    gender
+    eyeColor
   }: CharacterProps) {
     this.id = id
     this.name = name
+    this.birthYear = birthYear
+    this.gender = gender
     this.height = height
     this.mass = mass
     this.hairColor = hairColor
     this.skinColor = skinColor
     this.eyeColor = eyeColor
-    this.birthYear = birthYear
-    this.gender = gender
   }
 
   toJson() {
