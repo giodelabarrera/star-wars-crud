@@ -11,7 +11,7 @@ const baseClass = 'sw-CharacterCreateScreen'
 const initialFormData = {
   name: '',
   birthYear: '',
-  gender: '',
+  gender: null,
   height: null,
   mass: null,
   hairColor: '',
